@@ -16,7 +16,7 @@ namespace GameEngine
 		ObjTransform* transform;
 
 	private:
-		vector<Component *>* componentList;
+		vector<Component*>* componentList;
 
 		// functions
 	public:
@@ -24,20 +24,12 @@ namespace GameEngine
 		/// <summary>
 		/// Constructor for a new GameObject
 		/// </summary>
-		GameObject()
-		{
-			transform = new ObjTransform();
-			componentList = new vector<Component*>();
-		}
+		GameObject();
 		
 		/// <summary>
 		/// Destructor for a GameObject
 		/// </summary>
-		~GameObject()
-		{
-			delete(transform);
-			delete(componentList);
-		}
+		~GameObject();		
 
 		/// <summary>
 		/// Add a new component to this GameObject

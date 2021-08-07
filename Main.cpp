@@ -1,18 +1,27 @@
 #include <iostream>
-#include "GameObject.hpp"
-#include <vector>
+#include "Engine.hpp"
+#include <Windows.h>
 
 using namespace GameEngine;
 
-// add all game objects in the game to this list
-vector<GameObject*> *gameObjectList;
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
+
+// make sure engine is initialized as NULl
+Engine* Engine::instance = NULL;
 
 int main()
 {
-    gameObjectList = new vector<GameObject*>();
+    // hide console window
+    //::ShowWindow(::GetConsoleWindow(), SW_HIDE);
+    
+    // create game engine
+    Engine* gameEngine = Engine::getInstance();
+    gameEngine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT));
 
 
 
+    delete(gameEngine);
     std::cout << "Hello World!\n";
 }
 
