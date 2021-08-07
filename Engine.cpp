@@ -35,27 +35,39 @@ namespace GameEngine
 			return;
 		}
 
-		while (window->pollEvent(event))
+		Clock clock;
+		Time dTime;
+
+		// start game loop
+		while (window->isOpen())
 		{
-			// check for the closing of the window
-			if (event.type == Event::Closed)
+			if (window->pollEvent(event))
 			{
-				// close window
-				window->close();
+				// check for the closing of the window
+				if (event.type == Event::Closed)
+				{
+					// close window
+					window->close();
+				}
 			}
+
+			// update delta time
+			dTime = clock.restart();
+			deltaTime = dTime.asSeconds();
+
+			window->clear();
+
+			// run all of the components on all of the game objects
+			for (int i = 0; i < gameObjectList->size(); i++)
+			{
+				GameObject* currObj = (*gameObjectList)[i];
+				currObj->runComponents();
+			}
+
+
+			window->display();
 		}
-
-		window->clear();
-
-		// run all of the components on all of the game objects
-		for (int i = 0; i < gameObjectList->size(); i++)
-		{
-			GameObject* currObj = (*gameObjectList)[i];
-			currObj->runComponents();
-		}
-
-
-		window->display();
+		
 	}
 
 	void Engine::addGameObject(GameObject* gameObject)

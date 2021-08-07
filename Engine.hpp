@@ -17,6 +17,7 @@ namespace GameEngine
 		vector<GameObject*>* gameObjectList; // holds all of the GameObjects in this game
 		Event event;
 		RenderWindow* window;
+		float deltaTime;
 
 		/// <summary>
 		/// Constructor for a game engine instance.
@@ -81,6 +82,12 @@ namespace GameEngine
 		/// </summary>
 		/// <returns>a reference to the window</returns>
 		RenderWindow* getWindow();
+
+		/// <summary>
+		/// Get the time between frames
+		/// </summary>
+		/// <returns>the time between frames in seconds</returns>
+		float getDeltaTime();
 	};
 }
 
