@@ -8,17 +8,30 @@ namespace GameEngine
 	/// </summary>
 	class Component
 	{
+	protected:
+		bool enabled = true;
 	public:
-		bool enabled;
-
 		/// <summary>
 		/// called every frame by the GameObject that has this component
 		/// </summary>
 		virtual void update() = 0;
 
-		void setEnabled(bool enabled)
+		/// <summary>
+		/// Set whether this component is enabled or disabled
+		/// </summary>
+		/// <param name="enabled"></param>
+		virtual void setEnabled(bool isEnabled)
 		{
-			this->enabled = enabled;
+			enabled = isEnabled;
+		}
+
+		/// <summary>
+		/// Get whether this component is enabled or not
+		/// </summary>
+		/// <returns>true if this component is enabled and false otherwise</returns>
+		virtual bool getEnabled()
+		{
+			return enabled;
 		}
 	};
 }

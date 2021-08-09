@@ -16,7 +16,10 @@ namespace GameEngine
 	Engine::~Engine()
 	{
 		delete(gameObjectList);
-		delete(window);
+		if (window != NULL)
+		{
+			delete(window);
+		}
 	}
 
 	void Engine::setWindowDimensions(Vector2u dimensions)
@@ -119,6 +122,11 @@ namespace GameEngine
 	RenderWindow* Engine::getWindow()
 	{
 		return window;
+	}
+
+	float Engine::getDeltaTime()
+	{
+		return deltaTime;
 	}
 
 }

@@ -28,7 +28,7 @@ namespace GameEngine
 		{
 			Component* currComp = (*componentList)[i];
 			// only run component if it is enabled
-			if(currComp->enabled)
+			if(currComp->getEnabled())
 				currComp->update();
 		}
 	}

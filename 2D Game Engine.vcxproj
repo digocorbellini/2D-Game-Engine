@@ -146,6 +146,7 @@
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="STDComps\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Component.hpp" />
@@ -154,7 +155,13 @@
     <ClInclude Include="Engine\GameObject.hpp" />
     <ClInclude Include="Engine\Layers.hpp" />
     <ClInclude Include="Engine\Renderer.hpp" />
+    <ClInclude Include="Scripts\TestComp.hpp" />
     <ClInclude Include="Scripts\Test.h" />
+    <ClInclude Include="STDComps\SpriteRenderer.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

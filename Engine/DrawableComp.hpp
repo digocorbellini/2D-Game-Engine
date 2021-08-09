@@ -9,7 +9,7 @@ using namespace std;
 
 namespace GameEngine
 {
-	class DrawableComp : Component
+	class DrawableComp : public Component
 	{
 	public:
 		int orderInLayer;

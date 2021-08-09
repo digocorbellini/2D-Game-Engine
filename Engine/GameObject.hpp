@@ -25,7 +25,15 @@ namespace GameEngine
 		{
 		public:
 			Vector2f position;
+			Vector2f scale;
 			GameObject* parent;
+
+			ObjTransform()
+			{
+				position = Vector2f(0, 0);
+				scale = Vector2f(1, 1);
+				parent = NULL;
+			}
 		};
 
 		ObjTransform* transform;
