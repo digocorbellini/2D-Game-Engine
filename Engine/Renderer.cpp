@@ -55,7 +55,9 @@ namespace GameEngine
 		for (int i = 0; i < renderQueue->size(); i++)
 		{
 			DrawableComp* currComp = (*renderQueue)[i];
-			currComp->draw();
+			// only draw if the component is enabled
+			if(currComp->getEnabled())
+				currComp->draw();
 		}
 	}
 }

@@ -23,10 +23,7 @@ namespace GameEngine
 		/// <summary>
 		/// Private constructor for a Physics object. This class is a singleton
 		/// </summary>
-		Physics()
-		{
-			colliders = new vector<ColliderComp*>();
-		}
+		Physics();
 	public:
 		/// <summary>
 		/// Get an instance of this singleton class
@@ -44,10 +41,7 @@ namespace GameEngine
 		/// <summary>
 		/// A destructor for a physics object
 		/// </summary>
-		~Physics()
-		{
-			delete(colliders);
-		}
+		~Physics();
 
 		/// <summary>
 		/// Add the given collider to the list of colliders in the game
@@ -63,6 +57,15 @@ namespace GameEngine
 		/// of colliders in the game</param>
 		/// <returns>true if the collider is found and removed, and false otherwise</returns>
 		bool removeCollider(ColliderComp* collider);
+
+		/// <summary>
+		/// See if the given collider is colliding with any other collider,
+		/// and if it is then return the first collider that it is colliding with
+		/// </summary>
+		/// <param name="collider">the collider to be checked for collisions</param>
+		/// <returns>The first collider component that is colliding with
+		/// with the given collider component, and null otherwise</returns>
+		ColliderComp* isColliding(ColliderComp* collider);
 	};
 }
 

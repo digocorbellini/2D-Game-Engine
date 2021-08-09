@@ -1,14 +1,15 @@
 #ifndef BOX_COLLIDER_H
 #define BOX_COLLIDER_H
 
-#include "..\Engine\Component.hpp"
+#include "..\Engine\ColliderComp.hpp"
 #include "..\Engine\Engine.hpp"
+#include "..\Engine\Physics.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 using namespace GameEngine;
 
-class BoxCollider : public Component
+class BoxCollider : public ColliderComp
 {
 	/* variables */
 public:
@@ -18,9 +19,10 @@ private:
 	GameObject* gameObject;
 	RectangleShape* box;
 	Vector2f oldPos;
+	Physics* physics;
 
 public:
-	BoxCollider(Vector2f size, GameObject* gameObject);
+	BoxCollider(Vector2u size, GameObject* gameObject);
 
 	~BoxCollider();
 
@@ -33,6 +35,8 @@ public:
 	/// Called every frame after update. Used to handle physics and collisions
 	/// </summary>
 	void fixedUpdate();
+
+	FloatRect getBounds();
 };
 
 #endif // !BOX_COLLIDER_H

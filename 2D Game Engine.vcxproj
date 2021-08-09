@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Engine\Physics.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="STDComps\BoxCollider.cpp" />

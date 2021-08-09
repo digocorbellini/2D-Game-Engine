@@ -2,6 +2,8 @@
 #include "Engine/Engine.hpp"
 #include <Windows.h>
 #include "STDComps/SpriteRenderer.hpp"
+#include "STDComps/BoxCollider.hpp"
+
 
 #include "Scripts/Test.h"
 #include "Scripts/TestComp.hpp"
@@ -32,19 +34,40 @@ int main()
     Engine* gameEngine = Engine::getInstance();
     gameEngine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT));
 
+    // create object
     GameObject* testObj = new GameObject();
+    // get texture
     Texture marioTexture;
     marioTexture.loadFromFile("./Sprites/Mario.png");
+    // create sprite renderer component
     SpriteRenderer* renderer = new SpriteRenderer(&marioTexture, testObj);
-    testObj->transform->position = Vector2f(0, 0);
+    // set obj and component values
+    testObj->transform->position = Vector2f(100, 800);
     renderer->scale = Vector2f(.2, .2);
     testObj->transform->scale = Vector2f(.5, .5);
+    // make another component
     TestComp *testComp = new TestComp(testObj);
-
+    // add components
     testObj->addComponent(renderer);
     testObj->addComponent(testComp);
-
+    // add obj to game engine
     gameEngine->addGameObject(testObj);
+
+    // add collider to testObj
+    BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), testObj);
+    testObj->addComponent(testCol);
+
+    // bob
+    GameObject* bob = new GameObject();
+    bob->transform->position = Vector2f(500, 500);
+    bob->tag = "bob";
+    Texture bobTexture;
+    bobTexture.loadFromFile("./Sprites/bob.png");
+    SpriteRenderer* bobRend = new SpriteRenderer(&bobTexture, bob);
+    BoxCollider* bobCol = new BoxCollider(bobTexture.getSize(), bob);
+    bob->addComponent(bobRend);
+    bob->addComponent(bobCol);
+    gameEngine->addGameObject(bob);
 
    /* Sprite thingy(marioTexture);
     thingy.setPosition(100, 100);
@@ -52,7 +75,7 @@ int main()
     wind->draw(thingy);
     wind->display();*/
 
-
+    // start the game
     gameEngine->startEngine();
 
 
