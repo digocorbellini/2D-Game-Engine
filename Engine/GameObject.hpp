@@ -1,13 +1,14 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include "ObjTransform.hpp";
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include "Component.hpp"
 #include "DrawableComp.hpp"
 #include "Layers.hpp"
 
 using namespace std;
+using namespace sf;
 
 namespace GameEngine
 {

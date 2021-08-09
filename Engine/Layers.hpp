@@ -1,14 +1,14 @@
 #ifndef LAYERS_H
 #define LAYERS_H
 
-enum GameLayer
+enum class GameLayer
 {
 	DEFAULT
 };
 
-enum RenderingLayer
+enum class RenderingLayer
 {
-	UNDEFINED
+	DEFAULT
 };
 
 #endif // !LAYERS_H

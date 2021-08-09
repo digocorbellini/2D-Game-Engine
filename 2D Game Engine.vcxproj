@@ -142,19 +142,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="Engine.hpp" />
-    <ClInclude Include="DrawableComp.hpp" />
-    <ClInclude Include="Layers.hpp" />
-    <ClInclude Include="Renderer.hpp" />
-    <ClInclude Include="ObjTransform.hpp" />
+    <ClInclude Include="Engine\Component.hpp" />
+    <ClInclude Include="Engine\DrawableComp.hpp" />
+    <ClInclude Include="Engine\Engine.hpp" />
+    <ClInclude Include="Engine\GameObject.hpp" />
+    <ClInclude Include="Engine\Layers.hpp" />
+    <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scripts\Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
