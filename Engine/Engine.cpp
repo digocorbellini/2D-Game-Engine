@@ -16,10 +16,7 @@ namespace GameEngine
 	Engine::~Engine()
 	{
 		delete(gameObjectList);
-		if (window != NULL)
-		{
-			delete(window);
-		}
+		delete(window);
 	}
 
 	void Engine::setWindowDimensions(Vector2u dimensions)

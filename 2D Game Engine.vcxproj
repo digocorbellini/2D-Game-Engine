@@ -146,6 +146,7 @@
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="STDComps\BoxCollider.cpp" />
     <ClCompile Include="STDComps\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,10 +154,13 @@
     <ClInclude Include="Engine\DrawableComp.hpp" />
     <ClInclude Include="Engine\Engine.hpp" />
     <ClInclude Include="Engine\GameObject.hpp" />
+    <ClInclude Include="Engine\ColliderComp.hpp" />
+    <ClInclude Include="Engine\Physics.hpp" />
     <ClInclude Include="Engine\Layers.hpp" />
     <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scripts\TestComp.hpp" />
     <ClInclude Include="Scripts\Test.h" />
+    <ClInclude Include="STDComps\BoxCollider.hpp" />
     <ClInclude Include="STDComps\SpriteRenderer.hpp" />
   </ItemGroup>
   <ItemGroup>

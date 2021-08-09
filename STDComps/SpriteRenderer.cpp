@@ -53,3 +53,8 @@ void SpriteRenderer::update()
 {
 
 }
+
+void SpriteRenderer::fixedUpdate()
+{
+
+}

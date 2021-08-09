@@ -40,20 +40,22 @@ int main()
     renderer->scale = Vector2f(.2, .2);
     testObj->transform->scale = Vector2f(.5, .5);
     TestComp *testComp = new TestComp(testObj);
+
+    testObj->addComponent(renderer);
     testObj->addComponent(testComp);
+
     gameEngine->addGameObject(testObj);
 
-    Sprite thingy(marioTexture);
+   /* Sprite thingy(marioTexture);
     thingy.setPosition(100, 100);
     RenderWindow* wind = gameEngine->getWindow();
     wind->draw(thingy);
-    wind->display();
+    wind->display();*/
 
 
     gameEngine->startEngine();
 
 
-    delete(gameEngine);
 
     Renderer* rend = Renderer::getInstance();
     delete(rend);
@@ -61,6 +63,9 @@ int main()
     delete(testObj);
     delete(testComp);
     delete(renderer);
+
+    delete(gameEngine);
+
 
     // check for memory leaks
     //_CrtMemCheckpoint(&sNew); //take a snapchot 

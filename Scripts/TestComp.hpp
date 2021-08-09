@@ -26,6 +26,8 @@ public:
     }
 
 	void update();
+
+    void fixedUpdate();
 };
 
 void TestComp::update()
@@ -61,6 +63,11 @@ void TestComp::update()
 
     gameObject->transform->position = objPos;
     gameObject->transform->scale = objScale;
+
+}
+
+void TestComp::fixedUpdate()
+{
 
 }
 

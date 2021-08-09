@@ -57,7 +57,7 @@ namespace GameEngine
 		void addComponent(Component* component);
 
 		/// <summary>
-		/// Run all of the update functions in the components 
+		/// Run all of the update and fixed update functions in the components 
 		/// that this GameObject holds. Called every frame by the engine
 		/// </summary>
 		void runComponents();
