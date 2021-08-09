@@ -2,13 +2,12 @@
 #include "Engine.hpp"
 #include <Windows.h>
 
+#include "Scripts/Test.h"
+
 using namespace GameEngine;
 
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
-
-// make sure engine is initialized as NULl
-Engine* Engine::instance = NULL;
 
 int main()
 {
@@ -18,8 +17,9 @@ int main()
     // create game engine
     Engine* gameEngine = Engine::getInstance();
     gameEngine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT));
+    gameEngine->startEngine();
 
-
+   
 
     delete(gameEngine);
     std::cout << "Hello World!\n";

@@ -6,6 +6,8 @@ namespace GameEngine
 	{
 		transform = new ObjTransform();
 		componentList = new vector<Component*>();
+		gameLayer = GameLayer::DEFAULT;
+		tag = "undefined";
 	}
 
 	GameObject::~GameObject()
@@ -16,7 +18,7 @@ namespace GameEngine
 
 	void GameObject::addComponent(Component* component)
 	{
-		componentList->push_back(component);
+		componentList->push_back(component);		
 	}
 
 	void GameObject::runComponents()
@@ -25,7 +27,9 @@ namespace GameEngine
 		for (int i = 0; i < componentList->size(); i++)
 		{
 			Component* currComp = (*componentList)[i];
-			currComp->update();
+			// only run component if it is enabled
+			if(currComp->enabled)
+				currComp->update();
 		}
 	}
 

@@ -4,6 +4,8 @@
 #include "ObjTransform.hpp";
 #include <vector>
 #include "Component.hpp"
+#include "DrawableComp.hpp"
+#include "Layers.hpp"
 
 using namespace std;
 
@@ -11,15 +13,23 @@ namespace GameEngine
 {
 	class GameObject
 	{
-		// variables
-	public:
-		ObjTransform* transform;
-
+		/* variables */
 	private:
 		vector<Component*>* componentList;
-
-		// functions
+		
 	public:
+		string tag;
+		GameLayer gameLayer;
+		class ObjTransform
+		{
+		public:
+			Vector2f position;
+			GameObject* parent;
+		};
+
+		ObjTransform* transform;
+
+		/* functions */ 
 
 		/// <summary>
 		/// Constructor for a new GameObject

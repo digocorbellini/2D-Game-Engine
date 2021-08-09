@@ -2,6 +2,7 @@
 #define ENGINE_H
 
 #include "GameObject.hpp"
+#include "Renderer.hpp"
 #include <vector>
 
 namespace GameEngine
@@ -11,21 +12,28 @@ namespace GameEngine
 	/// </summary>
 	class Engine
 	{
-		// variables
+		/* variables */ 
 	private:
 		static Engine* instance; // for singleton
 		vector<GameObject*>* gameObjectList; // holds all of the GameObjects in this game
 		Event event;
 		RenderWindow* window;
 		float deltaTime;
+		Renderer* renderer;
+
+		/* functions */
 
 		/// <summary>
 		/// Constructor for a game engine instance.
 		/// Private since this class is a singleton
 		/// </summary>
 		Engine();
+
+		/// <summary>
+		/// Run the game loop
+		/// </summary>
+		void gameLoop();
 		
-		// functions
 	public:
 		/// <summary>
 		/// Gets the instance of this singleton class

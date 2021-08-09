@@ -2,10 +2,15 @@
 
 namespace GameEngine
 {
+	// make sure engine is initialized as NULL
+	Engine* Engine::instance = NULL;
+
 	Engine::Engine()
 	{
 		gameObjectList = new vector<GameObject*>();
 		window = NULL;
+		deltaTime = 0;
+		renderer = Renderer::getInstance();
 	}
 
 	Engine::~Engine()
@@ -27,14 +32,8 @@ namespace GameEngine
 		}
 	}
 
-	void Engine::startEngine()
+	void Engine::gameLoop()
 	{
-		// only start game if a window exits
-		if (window = NULL)
-		{
-			return;
-		}
-
 		Clock clock;
 		Time dTime;
 
@@ -64,9 +63,22 @@ namespace GameEngine
 				currObj->runComponents();
 			}
 
+			// handle all of the drawing onto the screen
+			renderer->render();
 
 			window->display();
 		}
+	}
+
+	void Engine::startEngine()
+	{
+		// only start game if a window exits
+		if (window == NULL)
+		{
+			return;
+		}
+		
+		gameLoop();
 		
 	}
 
