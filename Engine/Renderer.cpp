@@ -8,11 +8,19 @@ namespace GameEngine
 	Renderer::Renderer()
 	{
 		renderQueue = new vector<DrawableComp*>();
+		gizmos = new vector<Shape*>();
+		window = NULL;
+	}
+
+	void Renderer::setWindow(RenderWindow* window)
+	{
+		this->window = window;
 	}
 
 	Renderer::~Renderer()
 	{
 		delete(renderQueue);
+		delete(gizmos);
 	}
 
 	void Renderer::addToRenderQueue(DrawableComp* comp)
@@ -59,5 +67,54 @@ namespace GameEngine
 			if(currComp->getEnabled())
 				currComp->draw();
 		}
+
+		// draw gizmos if gizmos are on
+		if(gizmosOn)
+			drawGizmos();
+	}
+
+	void Renderer::drawGizmos()
+	{
+		// only attempt to draw all gizmos if window is not null
+		if (window == NULL)
+		{
+			return;
+		}
+
+		// draw all gizmos
+		for (int i = 0; i < gizmos->size(); i++)
+		{
+			Shape* currShape = (*gizmos)[i];
+			window->draw(*currShape);
+		}
+	}
+
+	void Renderer::addGizmo(Shape* gizmoShape)
+	{
+		gizmos->push_back(gizmoShape);
+	}
+
+	bool Renderer::removeGizmo(Shape* gizmoShape)
+	{
+		// find the gizmo
+		int pos = 0;
+		for (pos = 0; pos < gizmos->size(); pos++)
+		{
+			Shape* currShape = (*gizmos)[pos];
+			if (gizmoShape == currShape)
+			{
+				break;
+			}
+		}
+
+		// if the gizmo was found then remove it
+		if (pos < gizmos->size())
+		{
+			gizmos->erase(gizmos->begin() + pos);
+			return true;
+		}
+
+		// gizmo was not found
+		return false;
 	}
 }

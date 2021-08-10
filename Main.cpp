@@ -18,6 +18,7 @@ using namespace GameEngine;
 
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
+const bool gizmosOn = true;
 
 int main()
 {
@@ -33,6 +34,10 @@ int main()
     // create game engine
     Engine* gameEngine = Engine::getInstance();
     gameEngine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT));
+
+    // set gizmos
+    Renderer* rend = Renderer::getInstance();
+    rend->gizmosOn = gizmosOn;
 
     // create object
     GameObject* testObj = new GameObject();
@@ -80,7 +85,6 @@ int main()
 
 
 
-    Renderer* rend = Renderer::getInstance();
     delete(rend);
     
     delete(testObj);

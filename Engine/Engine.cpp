@@ -25,6 +25,7 @@ namespace GameEngine
 		if (window == NULL)
 		{
 			window = new RenderWindow(VideoMode(dimensions.x, dimensions.y), "game", Style::Close);
+			renderer->setWindow(window);
 		}
 		else
 		{

@@ -13,6 +13,12 @@ BoxCollider::BoxCollider(Vector2u size, GameObject* gameObject)
 
 	physics = Physics::getInstance();
 	physics->addCollider(this);
+
+	// add gizmo for collider
+	box->setFillColor(Color::Transparent);
+	box->setOutlineColor(Color::Green);
+	box->setOutlineThickness(1);
+	Renderer::getInstance()->addGizmo(box);
 }
 
 BoxCollider::~BoxCollider()
@@ -52,9 +58,6 @@ void BoxCollider::fixedUpdate()
 		// no collision so replace old position with new position
 		oldPos = gameObject->transform->position;
 	}
-
-	/*box->setOutlineColor(Color::Red);
-	Engine::getInstance()->getWindow()->draw(*box);*/
 }
 
 FloatRect BoxCollider::getBounds()

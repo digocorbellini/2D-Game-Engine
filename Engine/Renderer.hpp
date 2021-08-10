@@ -13,9 +13,14 @@ namespace GameEngine
 	class Renderer
 	{
 		/* variables */
+	public:
+		bool gizmosOn = true;
+
 	private:
 		static Renderer* instance;
 		vector<DrawableComp*>* renderQueue; // hold objects to render. Must stay sorted
+		vector<Shape*>* gizmos;
+		RenderWindow* window;
 
 		/* functions */
 
@@ -24,6 +29,11 @@ namespace GameEngine
 		/// Private since this class is a singleton
 		/// </summary>
 		Renderer();
+
+		/// <summary>
+		/// Draw all gizmos
+		/// </summary>
+		void drawGizmos();
 
 	public:
 		/// <summary>
@@ -45,6 +55,12 @@ namespace GameEngine
 		~Renderer();
 
 		/// <summary>
+		/// Set the window to render stuff to
+		/// </summary>
+		/// <param name="window">the window to render to</param>
+		void setWindow(RenderWindow* window);
+
+		/// <summary>
 		/// Add the given drawable component to the render queue
 		/// </summary>
 		/// <param name="comp">drawale component to add to the render queue</param>
@@ -63,6 +79,19 @@ namespace GameEngine
 		/// draw methods on the drawable components
 		/// </summary>
 		void render();
+
+		/// <summary>
+		/// Add a gizmo to the list of gizmos to be drawm
+		/// </summary>
+		/// <param name="gizmoShape">the shape to be drawn</param>
+		void addGizmo(Shape* gizmoShape);
+
+		/// <summary>
+		/// Remove a gizmo from the list of gizmos to be drawn
+		/// </summary>
+		/// <param name="gizmoShape">the shape to be removed</param>
+		/// <returns>true if the shape is removed and false otherwise</returns>
+		bool removeGizmo(Shape* gizmoShape);
 	};
 }
 
