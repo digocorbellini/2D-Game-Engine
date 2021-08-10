@@ -7,7 +7,7 @@ BoxCollider::BoxCollider(Vector2u size, GameObject* gameObject)
 	oldPos = gameObject->transform->position;
 	box = new RectangleShape(this->size);
 	// set the origin to the center of the rectangle
-	box->setOrigin(size.x / 2, size.y / 2);
+	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
 	// the default position of this box collider is the position of the gameObject
 	box->setPosition(oldPos);
 
@@ -28,25 +28,33 @@ void BoxCollider::update()
 void BoxCollider::fixedUpdate()
 {
 	// check for collisions here
-	// check to see if new pos causes a collision and if it does then return to old pos
-	// set size of box if it has been changed
-	if(size != box->getSize())
-		box->setSize(size);
+	 
+	// set new size
+	Vector2f newSize;
+	newSize.x = size.x * gameObject->transform->scale.x;
+	newSize.y = size.y * gameObject->transform->scale.y;
+	box->setSize(newSize);
+	// re-center origin
+	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
 
-	// check for collision in movement
+	// test new position
+	box->setPosition(gameObject->transform->position);
+
+	// check for collision in new position
 	if (physics->isColliding(this) != NULL)
 	{
 		// collision occured so move object back to old position
 		gameObject->transform->position = oldPos;
+		box->setPosition(oldPos);
 	}
 	else
 	{
-		// no collision so replace old position
+		// no collision so replace old position with new position
 		oldPos = gameObject->transform->position;
 	}
 
-	// update box collider position
-	box->setPosition(oldPos);
+	/*box->setOutlineColor(Color::Red);
+	Engine::getInstance()->getWindow()->draw(*box);*/
 }
 
 FloatRect BoxCollider::getBounds()

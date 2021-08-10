@@ -17,7 +17,6 @@ namespace GameEngine
 		static Renderer* instance;
 		vector<DrawableComp*>* renderQueue; // hold objects to render. Must stay sorted
 
-
 		/* functions */
 
 		/// <summary>

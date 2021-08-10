@@ -43,8 +43,8 @@ int main()
     SpriteRenderer* renderer = new SpriteRenderer(&marioTexture, testObj);
     // set obj and component values
     testObj->transform->position = Vector2f(100, 800);
-    renderer->scale = Vector2f(.2, .2);
-    testObj->transform->scale = Vector2f(.5, .5);
+    //renderer->scale = Vector2f(.2, .2);
+    testObj->transform->scale = Vector2f(.2, .2);
     // make another component
     TestComp *testComp = new TestComp(testObj);
     // add components

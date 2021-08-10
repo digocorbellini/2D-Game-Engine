@@ -36,7 +36,12 @@ public:
 	/// </summary>
 	void fixedUpdate();
 
+	/// <summary>
+	/// Get the bounds of this collider
+	/// </summary>
+	/// <returns>the bounds of this collider</returns>
 	FloatRect getBounds();
+
 };
 
 #endif // !BOX_COLLIDER_H
