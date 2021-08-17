@@ -3,7 +3,8 @@
 #include <Windows.h>
 #include "STDComps/SpriteRenderer.hpp"
 #include "STDComps/BoxCollider.hpp"
-
+#include "STDComps/Camera.hpp"
+#include "Scripts/CameraController.hpp"
 
 #include "Scripts/Test.h"
 #include "Scripts/TestComp.hpp"
@@ -74,11 +75,14 @@ int main()
     bob->addComponent(bobCol);
     gameEngine->addGameObject(bob);
 
-   /* Sprite thingy(marioTexture);
-    thingy.setPosition(100, 100);
-    RenderWindow* wind = gameEngine->getWindow();
-    wind->draw(thingy);
-    wind->display();*/
+    GameObject* cameraObj = new GameObject();
+    gameEngine->addGameObject(cameraObj);
+    Camera* cameraComp = new Camera(FloatRect(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 1280, 720), cameraObj);
+    cameraObj->addComponent(cameraComp);
+    CameraController* camCtrl = new CameraController(cameraObj, testObj->transform, 
+            10, 0.5);
+    cameraObj->addComponent(camCtrl);
+
 
     // start the game
     gameEngine->startEngine();
@@ -90,6 +94,8 @@ int main()
     delete(testObj);
     delete(testComp);
     delete(renderer);
+
+    delete(cameraObj);
 
     delete(gameEngine);
 

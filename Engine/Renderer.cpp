@@ -17,6 +17,11 @@ namespace GameEngine
 		this->window = window;
 	}
 
+	RenderWindow* Renderer::getWindow()
+	{
+		return window;
+	}
+
 	Renderer::~Renderer()
 	{
 		delete(renderQueue);

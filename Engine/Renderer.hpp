@@ -61,6 +61,12 @@ namespace GameEngine
 		void setWindow(RenderWindow* window);
 
 		/// <summary>
+		/// Get the render window
+		/// </summary>
+		/// <returns>the render window</returns>
+		RenderWindow* getWindow();
+
+		/// <summary>
 		/// Add the given drawable component to the render queue
 		/// </summary>
 		/// <param name="comp">drawale component to add to the render queue</param>
