@@ -25,7 +25,7 @@ void Rigidbody::fixedUpdate()
 	// calculate the final y velocity given the acceleration of gravity
 	float deltaTime = engine->getDeltaTime();
 	float currYVel = velocity.y;
-	float finalYVel = currYVel + gravityAccel * deltaTime * (int)applyGrav;
+	float finalYVel = currYVel + gravityAccel * deltaTime;
 
 	//cout << currYVel << endl;
 	//cout << finalYVel << endl;

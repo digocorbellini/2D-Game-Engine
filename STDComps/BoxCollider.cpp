@@ -50,6 +50,8 @@ void BoxCollider::fixedUpdate()
 	if (physics->isColliding(this) != NULL)
 	{
 		// TODO: do this for y and x positions separately
+		// maybe even rework collision system to move away in opposite
+		// direction of current movement until not colliding anymore
 
 		// collision occured so move object back to old position
 		gameObject->transform->position = oldPos;

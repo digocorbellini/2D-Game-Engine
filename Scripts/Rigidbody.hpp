@@ -19,7 +19,6 @@ private:
 	GameObject* gameObject;
 	Engine* engine;
 	float prevYPos;
-	bool applyGrav;
 
 	/* methods */
 public:
