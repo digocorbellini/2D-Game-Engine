@@ -34,7 +34,7 @@ public:
 	/// <summary>
 	/// Called every frame after update. Used to handle physics and collisions
 	/// </summary>
-	void fixedUpdate();
+	void lateUpdate();
 
 	/// <summary>
 	/// Get the bounds of this collider

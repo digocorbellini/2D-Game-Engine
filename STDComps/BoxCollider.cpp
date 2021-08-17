@@ -31,7 +31,7 @@ void BoxCollider::update()
 
 }
 
-void BoxCollider::fixedUpdate()
+void BoxCollider::lateUpdate()
 {
 	// check for collisions here
 	 
@@ -47,11 +47,41 @@ void BoxCollider::fixedUpdate()
 	box->setPosition(gameObject->transform->position);
 
 	// check for collision in new position
-	if (physics->isColliding(this) != NULL)
+	ColliderComp* collision = physics->isColliding(this);
+	if (collision != NULL)
 	{
-		// TODO: do this for y and x positions separately
-		// maybe even rework collision system to move away in opposite
-		// direction of current movement until not colliding anymore
+		// collision occured so move collider back to prev position
+
+		Vector2f currPos = gameObject->transform->position;
+		Vector2f newPos = oldPos;
+
+		RectangleShape testShape(box->getSize());
+		testShape.setOrigin(testShape.getSize().x / 2, testShape.getSize().y / 2);
+
+
+		// check for collision in the x pos
+		Vector2f testX(currPos.x, oldPos.y);
+		testShape.setPosition(testX);
+		if (!collision->getBounds().intersects(testShape.getGlobalBounds()))
+		{
+			// collision not caused by movement in X
+			// so newPos x can stay the same
+			newPos.x = currPos.x;
+		}
+
+		// check for collision in y pos
+		Vector2f testY(oldPos.x, currPos.y);
+		testShape.setPosition(testY);
+		if (!collision->getBounds().intersects(testShape.getGlobalBounds()))
+		{
+			// collision not caused by movement in y
+			// so newPos x can stay the same
+			newPos.y = currPos.y;
+		}
+
+		// the oldPos to move back to to avoid going into collider is the
+		// adjusted pos in the x and y directions
+		oldPos = newPos;
 
 		// collision occured so move object back to old position
 		gameObject->transform->position = oldPos;

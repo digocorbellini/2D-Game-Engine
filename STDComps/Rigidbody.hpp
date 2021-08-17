@@ -7,13 +7,17 @@
 
 using namespace GameEngine;
 
+/// <summary>
+/// MUST BE ADDED TO GAMEOBJECT BEFORE COLLIDERS
+/// TODO: fix order of fixed update calls
+/// </summary>
 class Rigidbody : public Component
 {
 	/* variables */
 public:
 	float gravityAccel = 500;
 	Vector2f velocity;
-	float gravThresh = .003;
+	float gravThresh = .001;
 	
 private:
 	GameObject* gameObject;
@@ -37,7 +41,7 @@ public:
 	/// <summary>
 	/// Called every frame after update. Used to handle physics and collisions
 	/// </summary>
-	void fixedUpdate();
+	void lateUpdate();
 };
 
 #endif

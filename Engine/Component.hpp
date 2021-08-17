@@ -19,7 +19,7 @@ namespace GameEngine
 		/// <summary>
 		/// Called every frame after update. Used to handle physics and collisions
 		/// </summary>
-		virtual void fixedUpdate() = 0;
+		virtual void lateUpdate() = 0;
 
 		/// <summary>
 		/// Set whether this component is enabled or disabled

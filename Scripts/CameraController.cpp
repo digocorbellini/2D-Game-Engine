@@ -31,7 +31,7 @@ void CameraController::update()
 	gameObject->transform->position = finalPos;
 }
 
-void CameraController::fixedUpdate()
+void CameraController::lateUpdate()
 {
 
 }

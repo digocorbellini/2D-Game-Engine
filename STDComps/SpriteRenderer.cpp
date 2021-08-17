@@ -54,7 +54,7 @@ void SpriteRenderer::update()
 
 }
 
-void SpriteRenderer::fixedUpdate()
+void SpriteRenderer::lateUpdate()
 {
 
 }

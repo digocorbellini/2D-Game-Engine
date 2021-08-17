@@ -3,7 +3,7 @@
 
 #include "../Engine/Component.hpp"
 #include "../Engine/GameObject.hpp"
-#include "Rigidbody.hpp"
+#include "../STDComps/Rigidbody.hpp"
 #include <iostream>
 #include <math.h>
 
@@ -34,7 +34,7 @@ public:
 
 	void update();
 
-    void fixedUpdate();
+    void lateUpdate();
 };
 
 void TestComp::update()
@@ -87,7 +87,7 @@ void TestComp::update()
 
 }
 
-void TestComp::fixedUpdate()
+void TestComp::lateUpdate()
 {
 
 }

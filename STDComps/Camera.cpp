@@ -21,7 +21,7 @@ void Camera::update()
 	window->setView(*cameraView);
 }
 
-void Camera::fixedUpdate()
+void Camera::lateUpdate()
 {
 
 }

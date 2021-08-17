@@ -20,7 +20,7 @@ void Rigidbody::update()
 	//cout << abs(gameObject->transform->position.y - prevYPos) << endl;
 }
 
-void Rigidbody::fixedUpdate()
+void Rigidbody::lateUpdate()
 {
 	// calculate the final y velocity given the acceleration of gravity
 	float deltaTime = engine->getDeltaTime();

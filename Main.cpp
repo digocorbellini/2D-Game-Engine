@@ -5,11 +5,12 @@
 #include "STDComps/BoxCollider.hpp"
 #include "STDComps/Camera.hpp"
 #include "Scripts/CameraController.hpp"
-#include "Scripts/Rigidbody.hpp"
+#include "STDComps/Rigidbody.hpp"
 
 #include "Scripts/Test.h"
 #include "Scripts/TestComp.hpp"
 
+// for checking for memory leaks
 #define _CRTDBG_MAP_ALLOC //to get more details
 #include <stdlib.h>  
 #include <crtdbg.h>   //for malloc and free
@@ -43,8 +44,6 @@ int main()
 
     // create object
     GameObject* mario = new GameObject();
-    Rigidbody gravityComp(mario);
-    mario->addComponent(&gravityComp);
     // get texture
     Texture marioTexture;
     marioTexture.loadFromFile("./Sprites/Mario.png");
@@ -54,6 +53,11 @@ int main()
     mario->transform->position = Vector2f(100, 800);
     //marioRend->scale = Vector2f(.2, .2);
     mario->transform->scale = Vector2f(.1, .1);
+    // add collider to mario and gravity
+    BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), mario);
+    Rigidbody gravityComp(mario);
+    mario->addComponent(&gravityComp);
+    mario->addComponent(testCol);
     // make another component
     TestComp *testComp = new TestComp(mario);
     // add components
@@ -62,9 +66,6 @@ int main()
     // add obj to game engine
     gameEngine->addGameObject(mario);
 
-    // add collider to mario
-    BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), mario);
-    mario->addComponent(testCol);
 
     // bob
     GameObject* bob = new GameObject();
