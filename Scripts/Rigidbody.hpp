@@ -13,7 +13,7 @@ class Rigidbody : public Component
 public:
 	float gravityAccel = 500;
 	Vector2f velocity;
-	float gravThresh = .005;
+	float gravThresh = .003;
 	
 private:
 	GameObject* gameObject;
