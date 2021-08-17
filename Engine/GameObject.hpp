@@ -69,7 +69,22 @@ namespace GameEngine
 		/// <returns>a reference to the first component of the given type that this
 		///	GameObject holds</returns>
 		template <typename componentType>
-		Component* getComponent();
+		componentType* getComponent()
+		{
+			// find the first component of the given type
+			for (int i = 0; i < componentList->size(); i++)
+			{
+				Component* currComp = (*componentList)[i];
+				componentType* comp = dynamic_cast<componentType*>(currComp);
+				if (comp != NULL)
+				{
+					return (componentType *)currComp;
+				}
+			}
+
+			// component not found
+			return NULL;
+		}
 	};
 }
 

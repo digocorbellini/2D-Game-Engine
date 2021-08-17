@@ -11,8 +11,8 @@ class CameraController : public Component
 {
 	/* variables */
 public:
-	float lerpThresh;
-	float speed;
+	float lerpThresh = 0.5;
+	float speed = 10;
 	GameObject::ObjTransform* target;
 
 private:

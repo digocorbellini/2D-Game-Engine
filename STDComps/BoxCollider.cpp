@@ -49,6 +49,8 @@ void BoxCollider::fixedUpdate()
 	// check for collision in new position
 	if (physics->isColliding(this) != NULL)
 	{
+		// TODO: do this for y and x positions separately
+
 		// collision occured so move object back to old position
 		gameObject->transform->position = oldPos;
 		box->setPosition(oldPos);

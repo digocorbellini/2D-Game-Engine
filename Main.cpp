@@ -5,6 +5,7 @@
 #include "STDComps/BoxCollider.hpp"
 #include "STDComps/Camera.hpp"
 #include "Scripts/CameraController.hpp"
+#include "Scripts/Rigidbody.hpp"
 
 #include "Scripts/Test.h"
 #include "Scripts/TestComp.hpp"
@@ -41,27 +42,29 @@ int main()
     rend->gizmosOn = gizmosOn;
 
     // create object
-    GameObject* testObj = new GameObject();
+    GameObject* mario = new GameObject();
+    Rigidbody gravityComp(mario);
+    mario->addComponent(&gravityComp);
     // get texture
     Texture marioTexture;
     marioTexture.loadFromFile("./Sprites/Mario.png");
-    // create sprite renderer component
-    SpriteRenderer* renderer = new SpriteRenderer(&marioTexture, testObj);
+    // create sprite marioRend component
+    SpriteRenderer* marioRend = new SpriteRenderer(&marioTexture, mario);
     // set obj and component values
-    testObj->transform->position = Vector2f(100, 800);
-    //renderer->scale = Vector2f(.2, .2);
-    testObj->transform->scale = Vector2f(.2, .2);
+    mario->transform->position = Vector2f(100, 800);
+    //marioRend->scale = Vector2f(.2, .2);
+    mario->transform->scale = Vector2f(.1, .1);
     // make another component
-    TestComp *testComp = new TestComp(testObj);
+    TestComp *testComp = new TestComp(mario);
     // add components
-    testObj->addComponent(renderer);
-    testObj->addComponent(testComp);
+    mario->addComponent(marioRend);
+    mario->addComponent(testComp);
     // add obj to game engine
-    gameEngine->addGameObject(testObj);
+    gameEngine->addGameObject(mario);
 
-    // add collider to testObj
-    BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), testObj);
-    testObj->addComponent(testCol);
+    // add collider to mario
+    BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), mario);
+    mario->addComponent(testCol);
 
     // bob
     GameObject* bob = new GameObject();
@@ -75,13 +78,23 @@ int main()
     bob->addComponent(bobCol);
     gameEngine->addGameObject(bob);
 
+    // implement the camera
     GameObject* cameraObj = new GameObject();
     gameEngine->addGameObject(cameraObj);
     Camera* cameraComp = new Camera(FloatRect(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 1280, 720), cameraObj);
     cameraObj->addComponent(cameraComp);
-    CameraController* camCtrl = new CameraController(cameraObj, testObj->transform, 
+    CameraController* camCtrl = new CameraController(cameraObj, mario->transform, 
             10, 0.5);
     cameraObj->addComponent(camCtrl);
+
+
+    // test floor
+    GameObject floor;
+    gameEngine->addGameObject(&floor);
+    floor.transform->position = Vector2f(0, 1000);
+    BoxCollider floorCol(Vector2u(100000, 10), &floor);
+    floor.addComponent(&floorCol);
+
 
 
     // start the game
@@ -91,9 +104,9 @@ int main()
 
     delete(rend);
     
-    delete(testObj);
+    delete(mario);
     delete(testComp);
-    delete(renderer);
+    delete(marioRend);
 
     delete(cameraObj);
 
