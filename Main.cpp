@@ -55,8 +55,8 @@ int main()
     mario->transform->scale = Vector2f(.1, .1);
     // add collider to mario and gravity
     BoxCollider* testCol = new BoxCollider(marioTexture.getSize(), mario);
-    Rigidbody gravityComp(mario);
-    mario->addComponent(&gravityComp);
+    Rigidbody* gravityComp = new Rigidbody(mario);
+    mario->addComponent(gravityComp);
     mario->addComponent(testCol);
     // make another component
     TestComp *testComp = new TestComp(mario);
@@ -65,6 +65,16 @@ int main()
     mario->addComponent(testComp);
     // add obj to game engine
     gameEngine->addGameObject(mario);
+
+
+    /* Player Object */
+    GameObject* player = new GameObject();
+    gameEngine->addGameObject(player);
+    Rigidbody* playerRB = new Rigidbody(player);
+    player->addComponent(playerRB);
+    Texture playerTexture;
+    playerTexture.loadFromFile("./Sprites/Mario.png");
+    
 
 
     // bob
@@ -90,11 +100,11 @@ int main()
 
 
     // test floor
-    GameObject floor;
-    gameEngine->addGameObject(&floor);
-    floor.transform->position = Vector2f(0, 1000);
-    BoxCollider floorCol(Vector2u(100000, 10), &floor);
-    floor.addComponent(&floorCol);
+    GameObject* floor = new GameObject();
+    gameEngine->addGameObject(floor);
+    floor->transform->position = Vector2f(0, 1000);
+    BoxCollider* floorCol = new BoxCollider(Vector2u(100000, 10), floor);
+    floor->addComponent(floorCol);
 
 
 
@@ -102,16 +112,11 @@ int main()
     gameEngine->startEngine();
 
 
-
-    delete(rend);
-    
-    delete(mario);
-    delete(testComp);
-    delete(marioRend);
-
-    delete(cameraObj);
+    gameEngine->clearGameObjectList();
 
     delete(gameEngine);
+    delete(rend);
+
 
 
     // check for memory leaks

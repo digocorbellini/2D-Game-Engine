@@ -148,6 +148,7 @@
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scripts\CameraController.cpp" />
+    <ClCompile Include="Scripts\PlayerController.cpp" />
     <ClCompile Include="STDComps\Rigidbody.cpp" />
     <ClCompile Include="STDComps\BoxCollider.cpp" />
     <ClCompile Include="STDComps\Camera.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Engine\Layers.hpp" />
     <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scripts\CameraController.hpp" />
+    <ClInclude Include="Scripts\PlayerController.hpp" />
     <ClInclude Include="STDComps\Rigidbody.hpp" />
     <ClInclude Include="Scripts\TestComp.hpp" />
     <ClInclude Include="Scripts\Test.h" />

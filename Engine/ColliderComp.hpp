@@ -16,6 +16,14 @@ namespace GameEngine
 		/// </summary>
 		/// <returns>the bounds of this collider</returns>
 		virtual FloatRect getBounds() = 0;
+
+		/// <summary>
+		/// Virtual destructor
+		/// </summary>
+		virtual ~ColliderComp()
+		{
+
+		}
 	};
 }
 

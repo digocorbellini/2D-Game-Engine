@@ -85,6 +85,11 @@ void TestComp::update()
         cout << "Y pos: " << gameObject->transform->position.y << endl;
     }
 
+    if (Keyboard::isKeyPressed(Keyboard::Escape))
+    {
+        engine->clearGameObjectList();
+    }
+
 }
 
 void TestComp::lateUpdate()

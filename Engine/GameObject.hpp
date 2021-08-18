@@ -85,6 +85,11 @@ namespace GameEngine
 			// component not found
 			return NULL;
 		}
+
+		/// <summary>
+		/// Clear all of the components on this gameObject (frees memory)
+		/// </summary>
+		void clearComponents();
 	};
 }
 

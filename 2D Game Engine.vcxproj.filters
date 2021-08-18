@@ -45,6 +45,9 @@
     <ClCompile Include="STDComps\Rigidbody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scripts\PlayerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Test.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="STDComps\Rigidbody.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\PlayerController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

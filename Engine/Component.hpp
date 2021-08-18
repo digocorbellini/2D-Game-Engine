@@ -38,6 +38,14 @@ namespace GameEngine
 		{
 			return enabled;
 		}
+
+		/// <summary>
+		/// Virtual destructor
+		/// </summary>
+		virtual ~Component()
+		{
+
+		}
 	};
 }
 

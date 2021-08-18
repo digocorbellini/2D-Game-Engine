@@ -29,6 +29,14 @@ namespace GameEngine
 		{
 			return (orderInLayer > other.orderInLayer);
 		}
+
+		/// <summary>
+		/// Virtual destructor
+		/// </summary>
+		virtual ~DrawableComp()
+		{
+
+		}
 	};
 }
 

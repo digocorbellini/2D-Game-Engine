@@ -41,4 +41,15 @@ namespace GameEngine
 				currComp->lateUpdate();
 		}
 	}
+
+	void GameObject::clearComponents()
+	{
+		for (int i = 0; i < componentList->size(); i++)
+		{
+			Component* currComp = (*componentList)[i];
+			delete(currComp);
+		}
+
+		componentList->clear();
+	}
 }

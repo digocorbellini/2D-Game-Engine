@@ -68,6 +68,15 @@ namespace GameEngine
 			renderer->render();
 
 			window->display();
+
+			// clear gameObjectList if needed now that we are done iterating
+			// through them
+			if (shouldClearList)
+			{
+				shouldClearList = false;
+				clearList();
+			}
+
 		}
 	}
 
@@ -127,4 +136,24 @@ namespace GameEngine
 		return deltaTime;
 	}
 
+	void Engine::clearGameObjectList()
+	{
+		shouldClearList = true;
+	}
+
+	void Engine::clearList()
+	{
+		for (int i = 0; i < gameObjectList->size(); i++)
+		{
+			GameObject* currObj = (*gameObjectList)[i];
+			if (currObj != NULL)
+			{
+				// clear all of the components on the obj before deleting it
+				currObj->clearComponents();
+				delete(currObj);
+			}
+		}
+
+		gameObjectList->clear();
+	}
 }

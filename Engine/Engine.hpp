@@ -20,6 +20,7 @@ namespace GameEngine
 		RenderWindow* window;
 		float deltaTime;
 		Renderer* renderer;
+		bool shouldClearList = false;
 
 		/* functions */
 
@@ -96,6 +97,14 @@ namespace GameEngine
 		/// </summary>
 		/// <returns>the time between frames in seconds</returns>
 		float getDeltaTime();
+
+		/// <summary>
+		/// Clear the list of gameObjects in this engine (frees memory)
+		/// </summary>
+		void clearGameObjectList();
+
+	private:
+		void clearList();
 	};
 }
 

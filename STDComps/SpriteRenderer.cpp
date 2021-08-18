@@ -20,6 +20,7 @@ SpriteRenderer::SpriteRenderer(Texture* spriteTexture, GameObject* gameObject)
 
 SpriteRenderer::~SpriteRenderer()
 {
+	renderer->removeFromRenderQueue(this);
 	delete(sprite);
 }
 
