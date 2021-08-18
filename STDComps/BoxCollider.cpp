@@ -100,3 +100,8 @@ FloatRect BoxCollider::getBounds()
 {
 	return box->getGlobalBounds();
 }
+
+GameObject* BoxCollider::getGameObject()
+{
+	return gameObject;
+}

@@ -15,7 +15,7 @@ class Rigidbody : public Component
 {
 	/* variables */
 public:
-	float gravityAccel = 500;
+	float gravityAccel = 800;
 	Vector2f velocity;
 	float gravThresh = .001;
 	

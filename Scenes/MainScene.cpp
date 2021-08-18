@@ -57,7 +57,11 @@ void MainScene::loadScene()
     BoxCollider* playerCol = new BoxCollider(playerTexture->getSize(), player);
     player->addComponent(playerCol);
     // controller comp
-    PlayerController* playerCtlr = new PlayerController(player, Vector2f(100, 100));
+    PlayerController* playerCtlr = new PlayerController(player, 
+            Vector2f(playerTexture->getSize().x * player->transform->scale.x, 50),
+            Vector2f(200, playerTexture->getSize().y * player->transform->scale.y));
+    playerCtlr->groundCheckOffset = Vector2f(0, 100);
+    playerCtlr->attackRightOffset = Vector2f(200, 0);
     player->addComponent(playerCtlr);
 
 
@@ -79,7 +83,7 @@ void MainScene::loadScene()
     GameObject* cameraObj = new GameObject();
     engine->addGameObject(cameraObj);
     // camera comp
-    Camera* cameraComp = new Camera(FloatRect(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 1280, 720), cameraObj);
+    Camera* cameraComp = new Camera(FloatRect(screenWidth / 2, screenHeight / 2, 1280, 720), cameraObj);
     cameraObj->addComponent(cameraComp);
     // cam controller
     CameraController* camCtrl = new CameraController(cameraObj, player->transform,
@@ -93,6 +97,7 @@ void MainScene::loadScene()
     floor->transform->position = Vector2f(0, 1000);
     BoxCollider* floorCol = new BoxCollider(Vector2u(100000, 10), floor);
     floor->addComponent(floorCol);
+    floor->gameLayer = GameLayer::GROUND;
 
 
     // test obj for priting and such

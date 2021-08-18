@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "ColliderComp.hpp"
+#include "Layers.hpp"
 
 using namespace std;
 
@@ -66,6 +67,24 @@ namespace GameEngine
 		/// <returns>The first collider component that is colliding with
 		/// with the given collider component, and null otherwise</returns>
 		ColliderComp* isColliding(ColliderComp* collider);
+
+		/// <summary>
+		/// Check to see if the given box is overlapping over any colliders
+		/// </summary>
+		/// <param name="box">The box to be checked against</param>
+		/// <param name="layer">The layer that the collider must be on</param>
+		/// <returns>The collider that the overlap box overlaps that is
+		/// on the given layer or NULL if no collider is overlapped</returns>
+		ColliderComp* overlapBox(RectangleShape* box, GameLayer layer);
+
+		/// <summary>
+		/// Check to see if the given box is overlapping over any colliders.
+		/// Returns a list of all of the colliders that this overlap box overlaps
+		/// </summary>
+		/// <param name="box">The box to be checked against</param>
+		/// <param name="layer">The layer that the colliders must be on</param>
+		/// <returns>a list of all of the colliders that this overlap box overlaps</returns>
+		vector<ColliderComp*>* overlapBoxAll(RectangleShape* box, GameLayer layer);
 	};
 }
 

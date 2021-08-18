@@ -3,7 +3,8 @@
 
 enum class GameLayer
 {
-	DEFAULT
+	DEFAULT,
+	GROUND
 };
 
 enum class RenderingLayer

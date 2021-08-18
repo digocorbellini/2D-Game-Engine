@@ -5,6 +5,7 @@
 #include "../Engine/GameObject.hpp"
 #include "../STDComps/Rigidbody.hpp"
 #include "../Engine/Renderer.hpp"
+#include "../Engine/Physics.hpp"
 
 using namespace GameEngine;
 
@@ -12,16 +13,23 @@ class PlayerController : public Component
 {
 	/* Variables */
 public:
-	float moveSpeed = 100;
-	float jumpSpeed = 100;
+	float moveSpeed = 300;
+	float jumpSpeed = 500;
 	Vector2f groundCheckOffset;
+	// offset of the attack for the player when it is playing right
+	Vector2f attackRightOffset; 
+	GameLayer groundLayer = GameLayer::GROUND;
 
 private:
 	GameObject* gameObject;
 	Rigidbody* rb;
 	RectangleShape* groundChecker; // use to check to see if the player is grounded
+	RectangleShape* attackBox;
 	bool isGrounded;
 	bool haveDoubleJump;
+	Physics* physics;
+	Engine* engine;
+	bool facingRight;
 
 	/* Methods */
 public:
@@ -31,7 +39,7 @@ public:
 	/// <param name="gameObject">the gameObject that this component
 	/// is attached to</param>
 	/// <param name="groundCheckSize">the size of the ground checker</param>
-	PlayerController(GameObject* gameObject, Vector2f groundCheckSize);
+	PlayerController(GameObject* gameObject, Vector2f groundCheckSize, Vector2f attackSize);
 
 	/// <summary>
 	/// A constructor for a new player controller component 
@@ -42,7 +50,7 @@ public:
 	/// <param name="groundCheckOffset">the offset of the ground checker
 	/// position relative to the position of the gameObject that this
 	/// component is attached to</param>
-	PlayerController(GameObject* gameObject, Vector2f groundCheckSize, Vector2f groundCheckOffset);
+	//PlayerController(GameObject* gameObject, Vector2f groundCheckSize, Vector2f groundCheckOffset);
 
 	/// <summary>
 	/// A destructor for a player controller component 

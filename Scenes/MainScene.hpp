@@ -24,8 +24,6 @@ private:
 	Engine* engine;
 	int screenWidth;
 	int screenHeight;
-	const int SCREEN_WIDTH = 1920;
-	const int SCREEN_HEIGHT = 1080;
 
 public:
 	MainScene(string sceneName);

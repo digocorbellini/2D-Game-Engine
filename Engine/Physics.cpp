@@ -69,6 +69,53 @@ namespace GameEngine
 		// no collision found
 		return NULL;
 	}
+
+	ColliderComp* Physics::overlapBox(RectangleShape* box, GameLayer layer)
+	{
+		FloatRect boxBounds = box->getGlobalBounds();
+
+		// check for an overlap with all of the enabled colliders in the game
+		// AWFULLY OPTIMIZED. MUST IMPROVE
+		for (int i = 0; i < colliders->size(); i++)
+		{
+			ColliderComp* currCol = (*colliders)[i];
+			FloatRect currBounds = currCol->getBounds();
+			if (currCol->getEnabled() 
+					&& currBounds.intersects(boxBounds)
+					&& currCol->getGameObject()->gameLayer == layer)
+			{
+				// found an overlap
+				return currCol;
+			}
+		}
+
+		// no collision found
+		return NULL;
+	}
+
+	vector<ColliderComp*>* Physics::overlapBoxAll(RectangleShape* box, GameLayer layer)
+	{
+		vector<ColliderComp*>* collisions = new vector<ColliderComp*>();
+
+		FloatRect boxBounds = box->getGlobalBounds();
+
+		// check for an overlap with all of the enabled colliders in the game
+		// AWFULLY OPTIMIZED. MUST IMPROVE
+		for (int i = 0; i < colliders->size(); i++)
+		{
+			ColliderComp* currCol = (*colliders)[i];
+			FloatRect currBounds = currCol->getBounds();
+			if (currCol->getEnabled()
+				&& currBounds.intersects(boxBounds)
+				&& currCol->getGameObject()->gameLayer == layer)
+			{
+				// found an overlap
+				collisions->push_back(currCol);
+			}
+		}
+
+		return collisions;
+	}
 }
 
 

@@ -42,6 +42,13 @@ public:
 	/// <returns>the bounds of this collider</returns>
 	FloatRect getBounds();
 
+
+	/// <summary>
+	/// Get the gameObject that this collider is attached to
+	/// </summary>
+	/// <returns>the gameobject that this collider is attached to</returns>
+	GameObject* getGameObject();
+
 };
 
 #endif // !BOX_COLLIDER_H
