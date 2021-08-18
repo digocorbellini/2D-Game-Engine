@@ -24,6 +24,7 @@ BoxCollider::BoxCollider(Vector2u size, GameObject* gameObject)
 BoxCollider::~BoxCollider()
 {
 	Renderer::getInstance()->removeGizmo(box);
+	physics->removeCollider(this);
 	delete(box);
 }
 
