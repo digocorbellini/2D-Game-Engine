@@ -25,6 +25,7 @@ private:
 	Renderer* renderer;
 	RenderWindow* window;
 	GameObject* gameObject; // the gameObject that this component is attached to 
+	Texture* texture;
 
 public:
 	/// <summary>

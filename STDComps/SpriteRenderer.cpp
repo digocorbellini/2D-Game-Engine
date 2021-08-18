@@ -16,12 +16,15 @@ SpriteRenderer::SpriteRenderer(Texture* spriteTexture, GameObject* gameObject)
 	renderer->addToRenderQueue(this);
 
 	window = Engine::getInstance()->getWindow();
+
+	texture = spriteTexture;
 }
 
 SpriteRenderer::~SpriteRenderer()
 {
 	renderer->removeFromRenderQueue(this);
 	delete(sprite);
+	delete(texture);
 }
 
 void SpriteRenderer::setEnabled(bool isEnabled)

@@ -17,7 +17,6 @@ namespace GameEngine
 		/* variables */
 	private:
 		vector<Component*>* componentList;
-		
 	public:
 		string tag;
 		GameLayer gameLayer;

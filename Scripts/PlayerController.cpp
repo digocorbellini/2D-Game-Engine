@@ -75,8 +75,7 @@ void PlayerController::update()
 	}
 
 	// check to see if the player is grounded
-
-
+	groundChecker->setPosition(gameObject->transform->position + groundCheckOffset);
 
 }
 

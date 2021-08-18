@@ -5,6 +5,8 @@
 #include "Renderer.hpp"
 #include <vector>
 
+#include "Scene.hpp"
+
 namespace GameEngine
 {
 	/// <summary>
@@ -13,6 +15,11 @@ namespace GameEngine
 	class Engine
 	{
 		/* variables */ 
+	public:
+		// temporary solution to reloading scenes
+		bool shouldLoadScene = false;
+		Scene* sceneToLoad = NULL;
+
 	private:
 		static Engine* instance; // for singleton
 		vector<GameObject*>* gameObjectList; // holds all of the GameObjects in this game
@@ -20,7 +27,7 @@ namespace GameEngine
 		RenderWindow* window;
 		float deltaTime;
 		Renderer* renderer;
-		bool shouldClearList = false;
+		bool shouldClearList = false;		
 
 		/* functions */
 

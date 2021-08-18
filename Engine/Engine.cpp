@@ -69,14 +69,19 @@ namespace GameEngine
 
 			window->display();
 
-			// clear gameObjectList if needed now that we are done iterating
-			// through them
+			// if list was asked to be cleared this frame, then clear it now
 			if (shouldClearList)
 			{
 				shouldClearList = false;
 				clearList();
 			}
 
+			if (shouldLoadScene)
+			{
+				shouldLoadScene = false;
+				if (sceneToLoad != NULL)
+					sceneToLoad->loadScene();
+			}
 		}
 	}
 

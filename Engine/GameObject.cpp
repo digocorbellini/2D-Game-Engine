@@ -24,7 +24,8 @@ namespace GameEngine
 	void GameObject::runComponents()
 	{
 		// go through all components and run their update function
-		for (int i = 0; i < componentList->size(); i++)
+		int size = componentList->size();
+		for (int i = 0;i < size; i++)
 		{
 			Component* currComp = (*componentList)[i];
 			// only run component if it is enabled
@@ -33,7 +34,7 @@ namespace GameEngine
 		}
 
 		// go through all components and run their fixed update function
-		for (int i = 0; i < componentList->size(); i++)
+		for (int i = 0; i < size; i++)
 		{
 			Component* currComp = (*componentList)[i];
 			// only run component if it is enabled
@@ -50,6 +51,6 @@ namespace GameEngine
 			delete(currComp);
 		}
 
-		componentList->clear();
+		componentList->clear();		
 	}
 }
