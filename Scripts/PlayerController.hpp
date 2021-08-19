@@ -18,7 +18,7 @@ class PlayerController : public Component
 public:
 	float moveSpeed = 300;
 	float jumpSpeed = 500;
-	float damage = 5;
+	int damage = 5;
 	Vector2f groundCheckOffset;
 	// offset of the attack for the player when it is playing right
 	Vector2f attackRightOffset; 

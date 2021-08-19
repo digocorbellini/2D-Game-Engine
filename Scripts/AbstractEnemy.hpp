@@ -1,6 +1,0 @@
-#ifndef ABSTRACT_ENEMEY_H
-#define ABSTRACT_ENEMEY_H
-
-
-#endif // !ABSTRACT_ENEMEY_H
-
