@@ -39,6 +39,7 @@ void MainScene::loadScene()
     // mario->addComponent(testComp);
     // add obj to game engine
     engine->addGameObject(mario);
+    mario->gameLayer = GameLayer::ENEMIES;
 
 
     /* ========= Player Object ========= */

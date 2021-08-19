@@ -85,6 +85,8 @@ PlayerController::~PlayerController()
 
 void PlayerController::update()
 {
+	Event event = engine->getEvent();
+
 	// player movement
 	Vector2f newPlayerScale = gameObject->transform->scale;
 	if (Keyboard::isKeyPressed(Keyboard::A))
@@ -124,8 +126,7 @@ void PlayerController::update()
 	}
 
 	// handle jump and double jump
-	Event e = engine->getEvent();
-	if (e.type == Event::KeyPressed && e.key.code == Keyboard::W)
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::W)
 	{
 		if (isGrounded)
 		{
@@ -150,6 +151,17 @@ void PlayerController::update()
 	{
 		// make the attack box face left
 		attackBox->setPosition(gameObject->transform->position - attackRightOffset);
+	}
+
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Space)
+	{
+		// attack
+		vector<ColliderComp*>* collisions = physics->overlapBoxAll(attackBox, enemyLayer);
+		for (int i = 0; i < collisions->size(); i++)
+		{
+			// damage each individual enemy
+			cout << "attacked enemy #" << i + 1 << endl;
+		}
 	}
 
 
