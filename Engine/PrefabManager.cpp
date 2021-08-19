@@ -101,4 +101,23 @@ namespace GameEngine
 
         return heart;
     }
+
+    GameObject* PrefabManager::viewPanelPrefab()
+    {
+        GameObject* viewPanel = new GameObject();
+        engine->addGameObject(viewPanel);
+        // add UI component
+        Texture* viewTexture = new Texture();
+        viewTexture->loadFromFile("./Sprites/white_square.jpg");
+        UIRenderer* panelRend = new UIRenderer(viewPanel, viewTexture);
+        viewPanel->addComponent(panelRend);
+        // set order in layer and layer
+        panelRend->orderInLayer = -1;
+        // scale to fit the whole screen
+        viewPanel->transform->scale = Vector2f(3, 3);
+        // make it transparent
+        panelRend->color.a = 0;
+
+        return viewPanel;
+    }
 }

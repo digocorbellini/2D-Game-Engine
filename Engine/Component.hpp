@@ -53,7 +53,8 @@ namespace GameEngine
 		/// Reset this component to the status it would be at when a scene is
 		/// first loaded
 		/// </summary>
-		virtual void resetComponent(){
+		virtual void resetComponent()
+		{
 
 		}
 	};

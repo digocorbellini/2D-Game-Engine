@@ -44,6 +44,12 @@ public:
 	/// </summary>
 	void lateUpdate();
 
+	/// <summary>
+	/// Get the view of this camera
+	/// </summary>
+	/// <returns>the view of this camera</returns>
+	View* getView();
+
 };
 
 #endif

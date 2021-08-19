@@ -1,7 +1,7 @@
 #ifndef COLLIDER_COMP_H
 #define COLLIDER_COMP_H
 
-#include "Component.hpp";
+#include "Component.hpp"
 #include "GameObject.hpp"
 #include <SFML/Graphics.hpp>
 

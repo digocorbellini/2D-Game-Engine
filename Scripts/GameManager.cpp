@@ -13,6 +13,10 @@ GameManager::GameManager()
 	playerController = NULL;
 	isSafe = true;
 	elapsedTime = 0;
+	viewPanel = NULL;
+
+	GameObject* viewPanelObj = PrefabManager::getInstance()->viewPanelPrefab();
+	viewPanel = viewPanelObj->getComponent<UIRenderer>();
 }
 
 void GameManager::addGameObject(GameObject* gameObject)
@@ -26,6 +30,9 @@ void GameManager::addGameObject(GameObject* gameObject)
 	{
 		playerController = playerObj->getComponent<PlayerController>();
 	}
+	
+	GameObject* viewPanelObj = PrefabManager::getInstance()->viewPanelPrefab();
+	viewPanel = viewPanelObj->getComponent<UIRenderer>();
 }
 
 GameManager::~GameManager()
@@ -38,6 +45,12 @@ void GameManager::update()
 	if (playerController == NULL)
 	{
 		cout << "Player controller is null in game manager" << endl;
+		return;
+	}
+
+	if (viewPanel == NULL)
+	{
+		cout << "view panel is null in game manager" << endl;
 		return;
 	}
 
@@ -56,6 +69,9 @@ void GameManager::update()
 
 	if (!isSafe)
 	{
+		// make the view panel not transparent (aka light on)
+		viewPanel->color.a = 100;
+
 		// handle all uncovered parts being dangerous
 		bool playerIsSafe = false;
 		// go through all safe spaces to see if player is within a safe space
@@ -81,6 +97,11 @@ void GameManager::update()
 			playerController->damagePlayer(1); 
 		}
 	}
+	else
+	{
+		// make the view panel transparent (aka light off)
+		viewPanel->color.a = 0;
+	}
 
 }
 
@@ -96,4 +117,5 @@ void GameManager::resetComponent()
 	playerController = NULL;
 	isSafe = true;
 	elapsedTime = 0;
+	viewPanel = NULL;
 }

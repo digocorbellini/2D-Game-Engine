@@ -25,3 +25,8 @@ void Camera::lateUpdate()
 {
 
 }
+
+View* Camera::getView()
+{
+	return cameraView;
+}

@@ -179,5 +179,8 @@
     <Image Include="Sprites\Mario.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Sprites\white_square.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

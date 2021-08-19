@@ -71,7 +71,6 @@ void MainScene::loadScene()
     floor->addComponent(floorCol);
     floor->gameLayer = GameLayer::GROUND;
 
-
     // test obj for priting and such
     GameObject* testingObj = new GameObject();
     engine->addGameObject(testingObj);

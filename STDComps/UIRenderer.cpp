@@ -10,9 +10,7 @@ UIRenderer::UIRenderer(GameObject* gameObject, Texture* spriteTexture)
 	sprite->setTexture(*spriteTexture);
 	// center sprite origin
 	sprite->setOrigin(spriteTexture->getSize().x / 2, spriteTexture->getSize().y / 2);
-	
 	this->gameObject = gameObject;
-
 	renderer = Renderer::getInstance();
 	renderer->addToRenderQueue(this);
 
@@ -30,18 +28,19 @@ UIRenderer::~UIRenderer()
 
 void UIRenderer::draw()
 {
-	// convert the game object position to a static screen position
-	Vector2f objPos = gameObject->transform->position;
-	Vector2i screenPos = Vector2i((int)objPos.x, (int)objPos.y);
-	Vector2f worldPos = window->mapPixelToCoords(screenPos);
-	sprite->setPosition(worldPos);
-
 	sprite->setColor(color);
 
 	// update sprite scale according to player scale
 	Vector2f objScale = gameObject->transform->scale;
 	Vector2f newScale(objScale.x * scale.x, objScale.y * scale.y);
 	sprite->setScale(newScale);
+	sprite->setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
+
+	// convert the game object position to a static screen position
+	Vector2f objPos = gameObject->transform->position;
+	Vector2i screenPos = Vector2i((int)objPos.x, (int)objPos.y);
+	Vector2f worldPos = window->mapPixelToCoords(screenPos);
+	sprite->setPosition(worldPos);
 
 	// draw sprite
 	window->draw(*sprite);

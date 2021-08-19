@@ -76,6 +76,12 @@ namespace GameEngine
 		/// </summary>
 		/// <returns>the UI heart game object</returns>
 		GameObject* UIHeartPrefab();
+
+		/// <summary>
+		/// Instantiate a camera game object
+		/// </summary>
+		/// <returns>the view panel game object</returns>
+		GameObject* viewPanelPrefab();
 	};
 
 }

@@ -6,6 +6,8 @@
 #include "../Engine/Engine.hpp"
 #include "../Engine/Physics.hpp"
 #include "../Engine/Layers.hpp"
+#include "../STDComps/UIRenderer.hpp"
+#include "../Engine/PrefabManager.hpp"
 #include "SafeSpace.hpp"
 #include "PlayerController.hpp"
 #include <vector>
@@ -31,6 +33,7 @@ private:
 	PlayerController* playerController;
 	float elapsedTime;
 	bool isSafe;
+	UIRenderer* viewPanel;
 
 	/* methods */
 
