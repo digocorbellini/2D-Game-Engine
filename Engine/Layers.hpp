@@ -5,12 +5,14 @@ enum class GameLayer
 {
 	DEFAULT,
 	GROUND,
-	ENEMIES
+	ENEMIES,
+	PLAYER
 };
 
 enum class RenderingLayer
 {
-	DEFAULT
+	DEFAULT,
+	UIELEMENT // all UIRenderer components are automatically set to this
 };
 
 #endif // !LAYERS_H

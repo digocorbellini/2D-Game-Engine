@@ -12,7 +12,12 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	rb = gameObject->getComponent<Rigidbody>();
 	if (rb == NULL)
 	{
-		//throw "rigidbody component not found in PlayerController";
+		throw "rigidbody component not found in PlayerController";
+	}
+	spriteRenderer = gameObject->getComponent<SpriteRenderer>();
+	if (spriteRenderer == NULL)
+	{
+		throw "sprite renderer component not found in PlayerController";
 	}
 	// create the ground checker
 	groundChecker = new RectangleShape(groundCheckSize);
@@ -22,11 +27,11 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	isGrounded = false;
 
 	// add groundChecker to gizmos
-	Renderer* rend = Renderer::getInstance();
+	Renderer* renderer = Renderer::getInstance();
 	groundChecker->setFillColor(Color::Transparent);
 	groundChecker->setOutlineThickness(1);
 	groundChecker->setOutlineColor(Color::Red);
-	rend->addGizmo(groundChecker);
+	renderer->addGizmo(groundChecker);
 
 	// get reference to the physics engine
 	physics = Physics::getInstance();
@@ -43,7 +48,7 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	attackBox->setFillColor(Color::Transparent);
 	attackBox->setOutlineThickness(1);
 	attackBox->setOutlineColor(Color::Red);
-	rend->addGizmo(attackBox);
+	renderer->addGizmo(attackBox);
 
 	facingRight = true;
 
@@ -56,9 +61,9 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 
 PlayerController::~PlayerController()
 {
-	Renderer* rend = Renderer::getInstance();
-	rend->removeGizmo(groundChecker);
-	rend->removeGizmo(attackBox);
+	Renderer* renderer = Renderer::getInstance();
+	renderer->removeGizmo(groundChecker);
+	renderer->removeGizmo(attackBox);
 	delete(groundChecker);
 	delete(health);
 }
@@ -154,15 +159,57 @@ void PlayerController::update()
 		{
 			// damage each individual enemy
 			cout << "attacked enemy #" << i + 1 << endl;
+			GameObject* currEnemyObj = (*collisions)[i]->getGameObject();
+			Enemy* currEnemy = currEnemyObj->getComponent<Enemy>();
+			if (currEnemy != NULL)
+			{
+				currEnemy->damageEnemy(damage);
+			}
 		}
 		delete(collisions);
 	}
 
+	// handle invincibility from taking damage
+	Color newColor = spriteRenderer->color;
+	if (isInvincible)
+	{
+		timeElapsed += engine->getDeltaTime();
+		// make player semi transparent
+		newColor.a = 180;
+		spriteRenderer->color = newColor;
 
+		// check to see if invinsibility time has elapsed
+		if (timeElapsed > invincibilityTime)
+		{
+			isInvincible = false;
+			timeElapsed = 0;
+		}
+	}
+	else
+	{
+		// make player not transparent
+		newColor.a = 255;
+		spriteRenderer->color = newColor;
+	}
 
 }
 
 void PlayerController::lateUpdate()
 {
 
+}
+
+int PlayerController::getHealth()
+{
+	return health->getHealth();
+}
+
+void PlayerController::damagePlayer(int damage)
+{
+	if (!isInvincible)
+	{
+		health->addHealth(-damage);
+		// start invincibility countdown
+		isInvincible = true;
+	}
 }

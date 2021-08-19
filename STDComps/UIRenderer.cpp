@@ -17,6 +17,8 @@ UIRenderer::UIRenderer(GameObject* gameObject, Texture* spriteTexture)
 	renderer->addToRenderQueue(this);
 
 	window = Engine::getInstance()->getWindow();
+
+	layer = RenderingLayer::UIELEMENT;
 }
 
 UIRenderer::~UIRenderer()

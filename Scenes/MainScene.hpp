@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../Engine/SceneManager.hpp"
+#include "../Engine/PrefabManager.hpp"
 
 #include "../STDComps/SpriteRenderer.hpp"
 #include "../STDComps/BoxCollider.hpp"
@@ -16,6 +17,7 @@
 #include "../Scripts/PlayerController.hpp"
 #include "../Scripts/UIManager.hpp"
 #include "../Scripts/TestComp.hpp"
+#include "../Scripts/Ant.hpp"
 
 using namespace GameEngine;
 using namespace std;
@@ -25,6 +27,7 @@ class MainScene : public Scene
 {
 private:
 	Engine* engine;
+	PrefabManager* prefabMan;
 	int screenWidth;
 	int screenHeight;
 

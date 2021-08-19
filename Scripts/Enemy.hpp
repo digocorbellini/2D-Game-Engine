@@ -11,10 +11,10 @@ class Enemy : public Component
 {
 protected:
 	GameObject* gameObject;
+	Health* health;
 
 public:
 	int damage;
-	Health* health;
 
 	/// <summary>
 	/// Virtual destructor

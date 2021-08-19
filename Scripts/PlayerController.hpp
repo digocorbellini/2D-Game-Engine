@@ -9,6 +9,8 @@
 #include "../Engine/SceneManager.hpp"
 #include "UIManager.hpp"
 #include "Health.hpp"
+#include "Enemy.hpp"
+#include "../STDComps/SpriteRenderer.hpp"
 
 using namespace GameEngine;
 
@@ -18,17 +20,19 @@ class PlayerController : public Component
 public:
 	float moveSpeed = 300;
 	float jumpSpeed = 500;
-	int damage = 5;
+	int damage = 1;
+	float invincibilityTime = 1;
 	Vector2f groundCheckOffset;
 	// offset of the attack for the player when it is playing right
 	Vector2f attackRightOffset; 
 	GameLayer groundLayer = GameLayer::GROUND;
 	GameLayer enemyLayer = GameLayer::ENEMIES;
-	Health* health; // damage player through here
 
 private:
+	Health* health; // damage player through here
 	GameObject* gameObject;
 	Rigidbody* rb;
+	SpriteRenderer* spriteRenderer;
 	RectangleShape* groundChecker; // use to check to see if the player is grounded
 	RectangleShape* attackBox;
 	bool isGrounded;
@@ -38,6 +42,8 @@ private:
 	SceneManager* sceneMan;
 	UIManager* UIMan;
 	bool facingRight;
+	float timeElapsed = 0;
+	bool isInvincible = false;
 
 	/* Methods */
 public:
@@ -74,6 +80,18 @@ public:
 	/// Called every frame after update. Used to handle physics and collisions
 	/// </summary>
 	void lateUpdate();
+
+	/// <summary>
+	/// Get the player's current health
+	/// </summary>
+	/// <returns>the player's current health</returns>
+	int getHealth();
+
+	/// <summary>
+	/// Damage the player the given amount of damage
+	/// </summary>
+	/// <param name="damage">the amount of damage to deal to the player</param>
+	void damagePlayer(int damage);
 };
 
 #endif

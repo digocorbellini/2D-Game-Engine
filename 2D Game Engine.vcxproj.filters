@@ -69,6 +69,12 @@
     <ClCompile Include="Scripts\UIManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scripts\Ant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\PrefabManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Test.h">
@@ -140,7 +146,13 @@
     <ClInclude Include="Scripts\UIManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scripts\AbstractEnemy.hpp">
+    <ClInclude Include="Scripts\Enemy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Ant.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\PrefabManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

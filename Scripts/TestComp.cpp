@@ -20,13 +20,13 @@ void TestComp::update()
     if (e.type == Event::KeyPressed && e.key.code == Keyboard::Tilde)
     {
         //UIManager::getInstance()->updateHeartUI(--health);
-        playerController->health->addHealth(-1);
+        playerController->damagePlayer(1);
     }
 
     if (e.type == Event::KeyPressed && e.key.code == Keyboard::Num1)
     {
         //UIManager::getInstance()->updateHeartUI(++health);
-        playerController->health->addHealth(1);
+        playerController->damagePlayer(-1);
     }
 
     if (health < 0)
