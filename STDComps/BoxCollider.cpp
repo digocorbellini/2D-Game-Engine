@@ -45,40 +45,58 @@ void BoxCollider::lateUpdate()
 	// re-center origin
 	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
 
-	// test new position
+	// test new position for collision
 	box->setPosition(gameObject->transform->position);
-
-	// check for collision in new position
-	ColliderComp* collision = physics->isColliding(this);
-	if (collision != NULL)
+	vector<ColliderComp*>* collisions = physics->isCollidingAll(this);
+	if (collisions->size() == 0)
 	{
-		// collision occured so move collider back to prev position
-
+		// no collision so replace old position with new position
+		oldPos = gameObject->transform->position;
+	}
+	else
+	{
+		// collision occured so have to move back to a position where
+		// there is no collision
 		Vector2f currPos = gameObject->transform->position;
 		Vector2f newPos = oldPos;
 
 		RectangleShape testShape(box->getSize());
 		testShape.setOrigin(testShape.getSize().x / 2, testShape.getSize().y / 2);
 
-
-		// check for collision in the x pos
+		// check for collision in the x direction
 		Vector2f testX(currPos.x, oldPos.y);
 		testShape.setPosition(testX);
-		if (!collision->getBounds().intersects(testShape.getGlobalBounds()))
+		// if the movement in the x direction does not cause this collider to
+		// collide with any of the collided with colliders, then move in the
+		// x direction
+		newPos.x = currPos.x;
+		for (int i = 0; i < collisions->size(); i++)
 		{
-			// collision not caused by movement in X
-			// so newPos x can stay the same
-			newPos.x = currPos.x;
-		}
+			ColliderComp* currCol = (*collisions)[i];
+			if (currCol->getBounds().intersects(testShape.getGlobalBounds()))
+			{
+				// collision caused by movement in X
+				// so newPos x has to go back to oldPos x
+				newPos.x = oldPos.x;
+			}
+		}	
 
-		// check for collision in y pos
+		// check for collision in y direction
 		Vector2f testY(oldPos.x, currPos.y);
 		testShape.setPosition(testY);
-		if (!collision->getBounds().intersects(testShape.getGlobalBounds()))
+		// if the movement in the y direction does not cause this collider to
+		// collide with any of the collided with colliders, then move in the
+		// y direction
+		newPos.y = currPos.y;
+		for (int i = 0; i < collisions->size(); i++)
 		{
-			// collision not caused by movement in y
-			// so newPos x can stay the same
-			newPos.y = currPos.y;
+			ColliderComp* currCol = (*collisions)[i];
+			if (currCol->getBounds().intersects(testShape.getGlobalBounds()))
+			{
+				// collision caused by movement in y
+				// so newPos x has to go back to oldPos y
+				newPos.y = oldPos.y;
+			}
 		}
 
 		// the oldPos to move back to to avoid going into collider is the
@@ -89,11 +107,7 @@ void BoxCollider::lateUpdate()
 		gameObject->transform->position = oldPos;
 		box->setPosition(oldPos);
 	}
-	else
-	{
-		// no collision so replace old position with new position
-		oldPos = gameObject->transform->position;
-	}
+	delete(collisions);
 }
 
 FloatRect BoxCollider::getBounds()
