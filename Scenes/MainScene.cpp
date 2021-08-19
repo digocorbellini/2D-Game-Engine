@@ -40,6 +40,7 @@ void MainScene::loadScene()
     // add obj to game engine
     engine->addGameObject(mario);
     mario->gameLayer = GameLayer::ENEMIES;
+    //testCol->isTrigger = true;
 
 
     /* ========= Player Object ========= */
@@ -106,4 +107,14 @@ void MainScene::loadScene()
     engine->addGameObject(testingObj);
     TestComp* testComp = new TestComp(testingObj);
     testingObj->addComponent(testComp);
+
+    // test UI
+    GameObject* testUI = new GameObject();
+    engine->addGameObject(testUI);
+    Texture* testUITexture = new Texture();
+    testUITexture->loadFromFile("./Sprites/bob.png");
+    UIRenderer* testUIRend = new UIRenderer(testUI, testUITexture);
+    testUI->addComponent(testUIRend);
+    testUI->transform->position = Vector2f(100, 100);
+    testUI->transform->scale = Vector2f(.5, .5);
 }

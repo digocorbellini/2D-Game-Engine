@@ -12,12 +12,13 @@ namespace GameEngine
 	class ColliderComp : public Component
 	{
 	public:
+		bool isTrigger;
+
 		/// <summary>
 		/// Get the bounds of this collider
 		/// </summary>
 		/// <returns>the bounds of this collider</returns>
 		virtual FloatRect getBounds() = 0;
-
 
 		/// <summary>
 		/// Get the gameObject that this collider is attached to

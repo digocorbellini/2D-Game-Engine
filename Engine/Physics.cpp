@@ -59,7 +59,8 @@ namespace GameEngine
 			FloatRect currBounds = currCol->getBounds();
 			if (currCol != collider 
 					&& currCol->getEnabled() 
-					&& colBounds.intersects(currBounds))
+					&& colBounds.intersects(currBounds)
+					&& !currCol->isTrigger)
 			{
 				// found a collision
 				return currCol;
@@ -87,7 +88,8 @@ namespace GameEngine
 			FloatRect currBounds = currCol->getBounds();
 			if (currCol != collider
 				&& currCol->getEnabled()
-				&& colBounds.intersects(currBounds))
+				&& colBounds.intersects(currBounds)
+				&& !currCol->isTrigger)
 			{
 				// found a collision
 				collisions->push_back(currCol);

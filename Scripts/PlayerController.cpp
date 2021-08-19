@@ -48,38 +48,11 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	facingRight = true;
 }
 
-//PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckSize, Vector2f groundCheckOffset)
-//{
-//	this->gameObject = gameObject;
-//	// rigidbody component is essential to this component working
-//	rb = gameObject->getComponent<Rigidbody>();
-//	if (rb == NULL)
-//	{
-//		//throw "rigidbody component not found in PlayerController";
-//	}
-//	// create the ground checker
-//	groundChecker = new RectangleShape(groundCheckSize);
-//	groundChecker->setOrigin(Vector2f(groundCheckSize.x / 2, groundCheckSize.y / 2));
-//	groundChecker->setPosition(gameObject->transform->position + groundCheckOffset);
-//	this->groundCheckOffset = Vector2f(groundCheckOffset);
-//	haveDoubleJump = true;
-//
-//	// add groundChecker to gizmos
-//	groundChecker->setFillColor(Color::Transparent);
-//	groundChecker->setOutlineThickness(1);
-//	groundChecker->setOutlineColor(Color::Red);
-//	Renderer::getInstance()->addGizmo(groundChecker);
-//
-//	// get reference to the physics engine
-//	physics = Physics::getInstance();
-//
-//	// get reference to engine
-//	engine = Engine::getInstance();
-//}
-
 PlayerController::~PlayerController()
 {
-	Renderer::getInstance()->removeGizmo(groundChecker);
+	Renderer* rend = Renderer::getInstance();
+	rend->removeGizmo(groundChecker);
+	rend->removeGizmo(attackBox);
 	delete(groundChecker);
 }
 

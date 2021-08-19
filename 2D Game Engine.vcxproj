@@ -155,7 +155,9 @@
     <ClCompile Include="STDComps\Rigidbody.cpp" />
     <ClCompile Include="STDComps\BoxCollider.cpp" />
     <ClCompile Include="STDComps\Camera.cpp" />
+    <ClCompile Include="STDComps\CircleCollider.cpp" />
     <ClCompile Include="STDComps\SpriteRenderer.cpp" />
+    <ClCompile Include="STDComps\UIRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Component.hpp" />
@@ -171,12 +173,14 @@
     <ClInclude Include="Scenes\MainScene.hpp" />
     <ClInclude Include="Scripts\CameraController.hpp" />
     <ClInclude Include="Scripts\PlayerController.hpp" />
+    <ClInclude Include="STDComps\CircleCollider.hpp" />
     <ClInclude Include="STDComps\Rigidbody.hpp" />
     <ClInclude Include="Scripts\TestComp.hpp" />
     <ClInclude Include="Scripts\Test.h" />
     <ClInclude Include="STDComps\BoxCollider.hpp" />
     <ClInclude Include="STDComps\Camera.hpp" />
     <ClInclude Include="STDComps\SpriteRenderer.hpp" />
+    <ClInclude Include="STDComps\UIRenderer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

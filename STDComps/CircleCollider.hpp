@@ -1,39 +1,40 @@
-#ifndef BOX_COLLIDER_H
-#define BOX_COLLIDER_H
+#ifndef CIRCLE_COLLIDER_H
+#define CIRCLE_COLLIDER_H
 
-#include "..\Engine\ColliderComp.hpp"
-#include "..\Engine\Engine.hpp"
-#include "..\Engine\Physics.hpp"
+#include "../Engine/ColliderComp.hpp"
+#include "../Engine/Engine.hpp"
+#include "../Engine/Physics.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 using namespace GameEngine;
 
-class BoxCollider : public ColliderComp
+class CircleCollider : public ColliderComp
 {
 	/* variables */
 public:
-	Vector2f size;
+	float radius;
 
 private:
 	GameObject* gameObject;
-	RectangleShape* box;
+	CircleShape* circle;
 	Vector2f oldPos;
 	Physics* physics;
 
 	/* methods */
 public:
 	/// <summary>
-	/// Constructor for a new box collider component
+	/// Constructor for a circle collider component
 	/// </summary>
-	/// <param name="size">the size of this box collider (square dimensions)</param>
-	/// <param name="gameObject">the gameObject that this component is attached to</param>
-	BoxCollider(Vector2u size, GameObject* gameObject);
+	/// <param name="gameObject">the gameObject that this collider is 
+	/// attached to</param>
+	/// <param name="radius">the radius of this circle collider</param>
+	CircleCollider(GameObject* gameObject, float radius);
 
 	/// <summary>
-	/// Destructor for a box collider component
+	/// Destructor for a circle collider component
 	/// </summary>
-	~BoxCollider();
+	~CircleCollider();
 
 	/// <summary>
 	/// called every frame by the GameObject that has this component
@@ -58,5 +59,4 @@ public:
 	GameObject* getGameObject();
 };
 
-#endif // !BOX_COLLIDER_H
-
+#endif

@@ -1,51 +1,48 @@
-#include "BoxCollider.hpp"
+#include "CircleCollider.hpp"
 
-BoxCollider::BoxCollider(Vector2u size, GameObject* gameObject)
+CircleCollider::CircleCollider(GameObject* gameObject, float radius)
 {
-	this->size = Vector2f(size);
+	this->radius = radius;
 	this->gameObject = gameObject;
 	oldPos = gameObject->transform->position;
-	box = new RectangleShape(this->size);
-	// set the origin to the center of the rectangle
-	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
-	// the default position of this box collider is the position of the gameObject
-	box->setPosition(oldPos);
-
-	physics = Physics::getInstance();
-	physics->addCollider(this);
+	isTrigger = false;
+	
+	// create circle shape
+	circle = new CircleShape(radius);
+	circle->setOrigin(Vector2f(radius, radius));
+	circle->setPosition(oldPos);
 
 	// add gizmo for collider
-	box->setFillColor(Color::Transparent);
-	box->setOutlineColor(Color::Green);
-	box->setOutlineThickness(1);
-	Renderer::getInstance()->addGizmo(box);
+	circle->setFillColor(Color::Transparent);
+	circle->setOutlineColor(Color::Green);
+	circle->setOutlineThickness(5);
+	Renderer::getInstance()->addGizmo(circle);
 
-	isTrigger = false;
+	// add this collider to the collider list
+	physics = Physics::getInstance();
+	physics->addCollider(this);
 }
 
-BoxCollider::~BoxCollider()
+CircleCollider::~CircleCollider()
 {
-	Renderer::getInstance()->removeGizmo(box);
+	Renderer::getInstance()->removeGizmo(circle);
 	physics->removeCollider(this);
-	delete(box);
+	delete(circle);
 }
 
-void BoxCollider::update()
+void CircleCollider::update()
 {
 
 }
 
-void BoxCollider::lateUpdate()
+void CircleCollider::lateUpdate()
 {
 	// check for collisions here
-	 
-	// set new size
-	Vector2f newSize;
-	newSize.x = size.x * gameObject->transform->scale.x;
-	newSize.y = size.y * gameObject->transform->scale.y;
-	box->setSize(newSize);
+	// set new scale
+	circle->setRadius(radius);
+	circle->setScale(gameObject->transform->scale);
 	// re-center origin
-	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
+	circle->setOrigin(radius, radius);
 
 	// ignore collisions if this collider is a trigger
 	if (isTrigger)
@@ -55,7 +52,7 @@ void BoxCollider::lateUpdate()
 
 	// handle collisions
 	// test new position for collision
-	box->setPosition(gameObject->transform->position);
+	circle->setPosition(gameObject->transform->position);
 	vector<ColliderComp*>* collisions = physics->isCollidingAll(this);
 
 	if (collisions->size() == 0)
@@ -70,8 +67,9 @@ void BoxCollider::lateUpdate()
 		Vector2f currPos = gameObject->transform->position;
 		Vector2f newPos = oldPos;
 
-		RectangleShape testShape(box->getSize());
-		testShape.setOrigin(testShape.getSize().x / 2, testShape.getSize().y / 2);
+		CircleShape testShape(radius);
+		testShape.setScale(circle->getScale());
+		testShape.setOrigin(Vector2f(radius, radius));
 
 		// check for collision in the x direction
 		Vector2f testX(currPos.x, oldPos.y);
@@ -89,7 +87,7 @@ void BoxCollider::lateUpdate()
 				// so newPos x has to go back to oldPos x
 				newPos.x = oldPos.x;
 			}
-		}	
+		}
 
 		// check for collision in y direction
 		Vector2f testY(oldPos.x, currPos.y);
@@ -115,17 +113,17 @@ void BoxCollider::lateUpdate()
 
 		// collision occured so move object back to old position
 		gameObject->transform->position = oldPos;
-		box->setPosition(oldPos);
+		circle->setPosition(oldPos);
 	}
 	delete(collisions);
 }
 
-FloatRect BoxCollider::getBounds()
+FloatRect CircleCollider::getBounds()
 {
-	return box->getGlobalBounds();
+	return circle->getGlobalBounds();
 }
 
-GameObject* BoxCollider::getGameObject()
+GameObject* CircleCollider::getGameObject()
 {
 	return gameObject;
 }

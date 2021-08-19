@@ -1,48 +1,56 @@
-#include "SpriteRenderer.hpp"
+#include "UIRenderer.hpp"
 
-SpriteRenderer::SpriteRenderer(Texture* spriteTexture, GameObject* gameObject)
+UIRenderer::UIRenderer(GameObject* gameObject, Texture* spriteTexture)
 {
 	scale = Vector2f(1, 1);
 	color = Color::White;
 	// set texture
+	texture = spriteTexture;
 	sprite = new Sprite();
 	sprite->setTexture(*spriteTexture);
-	// set the origin of the sprite to the center
+	// center sprite origin
 	sprite->setOrigin(spriteTexture->getSize().x / 2, spriteTexture->getSize().y / 2);
-
+	
 	this->gameObject = gameObject;
 
 	renderer = Renderer::getInstance();
 	renderer->addToRenderQueue(this);
 
 	window = Engine::getInstance()->getWindow();
-
-	texture = spriteTexture;
 }
 
-SpriteRenderer::~SpriteRenderer()
+UIRenderer::~UIRenderer()
 {
 	renderer->removeFromRenderQueue(this);
 	delete(sprite);
 	delete(texture);
 }
 
-void SpriteRenderer::draw()
+void UIRenderer::draw()
 {
-	sprite->setPosition(gameObject->transform->position);
+	// convert the game object position to a static screen position
+	Vector2f objPos = gameObject->transform->position;
+	Vector2i screenPos = Vector2i((int)objPos.x, (int)objPos.y);
+	Vector2f worldPos = window->mapPixelToCoords(screenPos);
+	sprite->setPosition(worldPos);
+
 	sprite->setColor(color);
+
+	// update sprite scale according to player scale
 	Vector2f objScale = gameObject->transform->scale;
 	Vector2f newScale(objScale.x * scale.x, objScale.y * scale.y);
 	sprite->setScale(newScale);
+
+	// draw sprite
 	window->draw(*sprite);
 }
 
-void SpriteRenderer::update()
+void UIRenderer::update()
 {
 
 }
 
-void SpriteRenderer::lateUpdate()
+void UIRenderer::lateUpdate()
 {
 
 }

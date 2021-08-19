@@ -42,12 +42,6 @@ public:
 	~SpriteRenderer();
 
 	/// <summary>
-	/// Set whether this component is enabled or not
-	/// </summary>
-	/// <param name="enabled">whether this component is enabled or not</param>
-	void setEnabled(bool enabled);
-
-	/// <summary>
 	/// called every frame by the renderer in the render queue
 	/// </summary>
 	void draw();

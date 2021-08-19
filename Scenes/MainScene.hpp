@@ -9,6 +9,8 @@
 #include "../STDComps/BoxCollider.hpp"
 #include "../STDComps/Camera.hpp"
 #include "../STDComps/Rigidbody.hpp"
+#include "../STDComps/CircleCollider.hpp"
+#include "../STDComps/UIRenderer.hpp"
 
 #include "../Scripts/CameraController.hpp"
 #include "../Scripts/PlayerController.hpp"
