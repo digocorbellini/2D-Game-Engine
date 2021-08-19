@@ -46,6 +46,12 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	rend->addGizmo(attackBox);
 
 	facingRight = true;
+
+	health = new Health(3);
+
+	UIMan = UIManager::getInstance();
+
+	sceneMan = SceneManager::getInstance();
 }
 
 PlayerController::~PlayerController()
@@ -54,10 +60,24 @@ PlayerController::~PlayerController()
 	rend->removeGizmo(groundChecker);
 	rend->removeGizmo(attackBox);
 	delete(groundChecker);
+	delete(health);
 }
 
 void PlayerController::update()
 {
+	// check for player death
+	if (health->getHealth() == 0)
+	{
+		// player has died
+		// reload scene
+		//cout << "Player has died" << endl;
+		UIMan->heartUIObjs->clear();
+		sceneMan->loadScene(sceneMan->getActiveScene()->sceneName);
+	}
+
+	// update player health UI
+	UIMan->updateHeartUI(health->getHealth());
+
 	Event event = engine->getEvent();
 
 	// player movement

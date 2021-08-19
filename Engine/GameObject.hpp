@@ -20,6 +20,7 @@ namespace GameEngine
 	public:
 		string tag;
 		GameLayer gameLayer;
+		bool isEnabled = true;
 		class ObjTransform
 		{
 		public:
@@ -89,6 +90,19 @@ namespace GameEngine
 		/// Clear all of the components on this gameObject (frees memory)
 		/// </summary>
 		void clearComponents();
+
+		/// <summary>
+		/// Set whether this gameObject and all of its components are enabled or not
+		/// </summary>
+		/// <param name="isEnabled">whether this gameObject and all of its 
+		/// components are enabled or not</param>
+		void setEnabled(bool isEnabled);
+
+		/// <summary>
+		/// Get whether this gameObject is enabled or not
+		/// </summary>
+		/// <returns>true if this gameObject is enabled and false if it is not</returns>
+		bool getEnabled();
 	};
 }
 

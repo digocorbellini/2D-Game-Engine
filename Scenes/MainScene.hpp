@@ -14,6 +14,7 @@
 
 #include "../Scripts/CameraController.hpp"
 #include "../Scripts/PlayerController.hpp"
+#include "../Scripts/UIManager.hpp"
 #include "../Scripts/TestComp.hpp"
 
 using namespace GameEngine;

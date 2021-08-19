@@ -46,6 +46,7 @@ void MainScene::loadScene()
     /* ========= Player Object ========= */
     GameObject* player = new GameObject();
     engine->addGameObject(player);
+    player->tag = "Player";
     // rigidbody comp
     Rigidbody* playerRB = new Rigidbody(player);
     player->addComponent(playerRB);
@@ -107,8 +108,10 @@ void MainScene::loadScene()
     engine->addGameObject(testingObj);
     TestComp* testComp = new TestComp(testingObj);
     testingObj->addComponent(testComp);
+    testComp->playerController = playerCtlr;
 
     // test UI
+    // ui 1
     GameObject* testUI = new GameObject();
     engine->addGameObject(testUI);
     Texture* testUITexture = new Texture();
@@ -117,4 +120,33 @@ void MainScene::loadScene()
     testUI->addComponent(testUIRend);
     testUI->transform->position = Vector2f(100, 100);
     testUI->transform->scale = Vector2f(.5, .5);
+    // ui 2
+    GameObject* testUI2 = new GameObject();
+    engine->addGameObject(testUI2);
+    Texture* testUITexture2 = new Texture();
+    testUITexture2->loadFromFile("./Sprites/bob.png");
+    UIRenderer* testUIRend2 = new UIRenderer(testUI2, testUITexture2);
+    testUI2->addComponent(testUIRend2);
+    testUI2->transform->position = Vector2f(250, 100);
+    testUI2->transform->scale = Vector2f(.5, .5);
+    // ui 3
+    GameObject* testUI3 = new GameObject();
+    engine->addGameObject(testUI3);
+    Texture* testUITexture3 = new Texture();
+    testUITexture3->loadFromFile("./Sprites/bob.png");
+    UIRenderer* testUIRend3 = new UIRenderer(testUI3, testUITexture3);
+    testUI3->addComponent(testUIRend3);
+    testUI3->transform->position = Vector2f(400, 100);
+    testUI3->transform->scale = Vector2f(.5, .5);
+
+    // UIManager 
+    GameObject* UIManagerObj = new GameObject();
+    engine->addGameObject(UIManagerObj);
+    UIManager* UIManComp = UIManager::getInstance();
+    UIManComp->addGameObject(UIManagerObj);
+    UIManComp->heartUIObjs->push_back(testUI);
+    UIManComp->heartUIObjs->push_back(testUI2);
+    UIManComp->heartUIObjs->push_back(testUI3);
+    UIManagerObj->addComponent(UIManComp);
+    UIManComp->updateHeartUI(3);
 }

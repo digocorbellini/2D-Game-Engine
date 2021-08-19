@@ -11,6 +11,8 @@ namespace GameEngine
 	protected:
 		bool enabled = true;
 	public:
+		bool destroyOnLoad = true;
+
 		/// <summary>
 		/// called every frame by the GameObject that has this component
 		/// </summary>

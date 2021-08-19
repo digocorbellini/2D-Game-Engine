@@ -6,6 +6,7 @@
 #include "../STDComps/Rigidbody.hpp"
 #include <iostream>
 #include <math.h>
+#include "PlayerController.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -18,7 +19,9 @@ class TestComp : public Component
 private:
     GameObject* gameObject;
     Engine* engine;
+    int health = 3;
 public:
+    PlayerController* playerController;
     int speed = 500;
     TestComp(GameObject* gameObject)
     {

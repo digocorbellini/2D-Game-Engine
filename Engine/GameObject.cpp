@@ -48,9 +48,28 @@ namespace GameEngine
 		for (int i = 0; i < componentList->size(); i++)
 		{
 			Component* currComp = (*componentList)[i];
-			delete(currComp);
+			if(currComp->destroyOnLoad)
+				delete(currComp);
 		}
 
 		componentList->clear();		
+	}
+
+	void GameObject::setEnabled(bool isEnabled)
+	{
+		// go through all components and enable or disable them 
+		// so that they are in the same state as this gameObject
+		for (int i = 0; i < componentList->size(); i++)
+		{
+			Component* currComp = (*componentList)[i];
+			currComp->setEnabled(isEnabled);
+		}
+
+		this->isEnabled = isEnabled;
+	}
+
+	bool GameObject::getEnabled()
+	{
+		return isEnabled;
 	}
 }

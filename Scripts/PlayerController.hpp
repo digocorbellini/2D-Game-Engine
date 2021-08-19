@@ -6,6 +6,9 @@
 #include "../STDComps/Rigidbody.hpp"
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Physics.hpp"
+#include "../Engine/SceneManager.hpp"
+#include "UIManager.hpp"
+#include "Health.hpp"
 
 using namespace GameEngine;
 
@@ -21,6 +24,7 @@ public:
 	Vector2f attackRightOffset; 
 	GameLayer groundLayer = GameLayer::GROUND;
 	GameLayer enemyLayer = GameLayer::ENEMIES;
+	Health* health; // damage player through here
 
 private:
 	GameObject* gameObject;
@@ -31,6 +35,8 @@ private:
 	bool haveDoubleJump;
 	Physics* physics;
 	Engine* engine;
+	SceneManager* sceneMan;
+	UIManager* UIMan;
 	bool facingRight;
 
 	/* Methods */
