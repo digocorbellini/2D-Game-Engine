@@ -34,6 +34,23 @@ namespace GameEngine
 		/// Draw all gizmos
 		/// </summary>
 		void drawGizmos();
+	
+		/// <summary>
+		/// custom less than operator for sorting the renderQueue by sorting
+		/// layer and order in sorting layer
+		/// </summary>
+		struct
+		{
+			bool operator()(DrawableComp* d1, DrawableComp* d2) const
+			{ 
+				if (d1->layer == d2->layer)
+				{
+					return (d1->orderInLayer < d2->orderInLayer);
+				}
+
+				return ((int)d1->layer < (int)d2->layer);
+			}
+		}customLess;
 
 	public:
 		/// <summary>

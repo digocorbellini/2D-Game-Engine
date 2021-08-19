@@ -161,4 +161,22 @@ namespace GameEngine
 
 		gameObjectList->clear();
 	}
+
+	GameObject* Engine::findGameObjectWithTag(string tag)
+	{
+		// go through all gameObjects in the game until an Object with the tag
+		// is found
+		for (int i = 0; i < gameObjectList->size(); i++)
+		{
+			GameObject* currObj = (*gameObjectList)[i];
+			if (currObj->tag == tag)
+			{
+				// found a gameObject with the tag
+				return currObj;
+			}
+		}
+
+		// no gameObject found with the given tag
+		return NULL;
+	}
 }

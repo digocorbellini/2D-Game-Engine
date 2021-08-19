@@ -59,10 +59,8 @@ namespace GameEngine
 
 	void Renderer::render()
 	{
-		// later also sort by rendering layer
-
 		// sort queue in ascending order first
-		std::sort(renderQueue->begin(), renderQueue->end());
+		std::sort(renderQueue->begin(), renderQueue->end(), customLess);
 
 		// run all of the draw functions on the render queue
 		for (int i = 0; i < renderQueue->size(); i++)

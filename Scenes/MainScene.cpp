@@ -105,4 +105,32 @@ void MainScene::loadScene()
     GameObject* ant1 = prefabMan->antPrefab();
     ant1->transform->position = Vector2f(600, 0);
 
+    /* ========= Game Manager ========== */
+    GameObject* gameManager = new GameObject();
+    engine->addGameObject(gameManager);
+    // create the game manager component
+    GameManager* gameManComp = GameManager::getInstance();
+    gameManComp->addGameObject(gameManager);
+    gameManager->addComponent(gameManComp);
+    
+    gameManComp->timeBetweenStates = 5;
+
+
+    // test safe space
+    GameObject* safeSpace1 = new GameObject();
+    engine->addGameObject(safeSpace1);
+    safeSpace1->transform->position = Vector2f(-1500, 0);
+    // give it a sprite
+    Texture* safeTexture1 = new Texture();
+    safeTexture1->loadFromFile("./Sprites/Mario.png");
+    SpriteRenderer* safeSpriteRend1 = new SpriteRenderer(safeTexture1, safeSpace1);
+    safeSpace1->addComponent(safeSpriteRend1);
+    safeSpriteRend1->layer = RenderingLayer::BACKGROUND;
+    //safeSpriteRend1->orderInLayer = -1;
+    // give it a safe space component
+    SafeSpace* safeSpaceComp1 = new SafeSpace(safeSpace1);
+    safeSpaceComp1->safeSpaceSize = Vector2f(safeTexture1->getSize());
+    safeSpace1->addComponent(safeSpaceComp1);
+
+    gameManComp->safeSpaces->push_back(safeSpaceComp1);
 }

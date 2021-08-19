@@ -18,6 +18,8 @@ SpriteRenderer::SpriteRenderer(Texture* spriteTexture, GameObject* gameObject)
 	window = Engine::getInstance()->getWindow();
 
 	texture = spriteTexture;
+
+	layer = RenderingLayer::DEFAULT;
 }
 
 SpriteRenderer::~SpriteRenderer()

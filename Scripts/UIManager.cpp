@@ -4,7 +4,7 @@ UIManager* UIManager::instance = NULL;
 
 UIManager::UIManager()
 {
-	this->gameObject = NULL;
+	gameObject = NULL;
 	heartUIObjs = new vector<GameObject*>();
 	health = 0;
 	destroyOnLoad = false;
@@ -42,7 +42,7 @@ void UIManager::update()
 
 void UIManager::resetComponent()
 {
-	this->gameObject = NULL;
+	gameObject = NULL;
 	heartUIObjs->clear();
 	health = 0;
 	destroyOnLoad = false;

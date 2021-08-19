@@ -152,8 +152,10 @@
     <ClCompile Include="Scenes\MainScene.cpp" />
     <ClCompile Include="Scripts\Ant.cpp" />
     <ClCompile Include="Scripts\CameraController.cpp" />
+    <ClCompile Include="Scripts\GameManager.cpp" />
     <ClCompile Include="Scripts\Health.cpp" />
     <ClCompile Include="Scripts\PlayerController.cpp" />
+    <ClCompile Include="Scripts\SafeSpace.cpp" />
     <ClCompile Include="Scripts\TestComp.cpp" />
     <ClCompile Include="Scripts\UIManager.cpp" />
     <ClCompile Include="STDComps\Rigidbody.cpp" />
@@ -179,8 +181,10 @@
     <ClInclude Include="Scripts\Ant.hpp" />
     <ClInclude Include="Scripts\Enemy.hpp" />
     <ClInclude Include="Scripts\CameraController.hpp" />
+    <ClInclude Include="Scripts\GameManager.hpp" />
     <ClInclude Include="Scripts\Health.hpp" />
     <ClInclude Include="Scripts\PlayerController.hpp" />
+    <ClInclude Include="Scripts\SafeSpace.hpp" />
     <ClInclude Include="Scripts\UIManager.hpp" />
     <ClInclude Include="STDComps\CircleCollider.hpp" />
     <ClInclude Include="STDComps\Rigidbody.hpp" />

@@ -20,16 +20,6 @@ namespace GameEngine
 		/// </summary>
 		virtual void draw() = 0;
 
-		bool operator < (const DrawableComp& other) const
-		{
-			return (orderInLayer < other.orderInLayer);
-		}
-
-		bool operator > (const DrawableComp& other) const
-		{
-			return (orderInLayer > other.orderInLayer);
-		}
-
 		/// <summary>
 		/// Virtual destructor
 		/// </summary>

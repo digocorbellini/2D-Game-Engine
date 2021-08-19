@@ -110,6 +110,15 @@ namespace GameEngine
 		/// </summary>
 		void clearGameObjectList();
 
+		/// <summary>
+		/// Get a reference to the first game object found with the given tag.
+		/// THIS IS A VERY EXPENSIVE OPERATION
+		/// </summary>
+		/// <param name="tag">the tag of the object to be searched</param>
+		/// <returns>a reference to the first game object found with the 
+		/// given tag or NULL if no game object with the given tag is found</returns>
+		GameObject* findGameObjectWithTag(string tag);
+
 	private:
 		void clearList();
 	};

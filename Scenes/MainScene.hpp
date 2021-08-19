@@ -18,6 +18,8 @@
 #include "../Scripts/UIManager.hpp"
 #include "../Scripts/TestComp.hpp"
 #include "../Scripts/Ant.hpp"
+#include "../Scripts/SafeSpace.hpp"
+#include "../Scripts/GameManager.hpp"
 
 using namespace GameEngine;
 using namespace std;

@@ -3,7 +3,7 @@
 
 enum class GameLayer
 {
-	DEFAULT,
+	DEFAULT, // all gameObjects are automatically set to this
 	GROUND,
 	ENEMIES,
 	PLAYER
@@ -11,7 +11,8 @@ enum class GameLayer
 
 enum class RenderingLayer
 {
-	DEFAULT,
+	BACKGROUND,
+	DEFAULT, // all drawable components are automatically set to this
 	UIELEMENT // all UIRenderer components are automatically set to this
 };
 
