@@ -173,6 +173,7 @@
     <ClInclude Include="Engine\Layers.hpp" />
     <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scenes\MainScene.hpp" />
+    <ClInclude Include="Scripts\AbstractEnemy.hpp" />
     <ClInclude Include="Scripts\CameraController.hpp" />
     <ClInclude Include="Scripts\Health.hpp" />
     <ClInclude Include="Scripts\PlayerController.hpp" />

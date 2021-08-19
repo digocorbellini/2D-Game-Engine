@@ -40,6 +40,14 @@ void UIManager::update()
 	}
 }
 
+void UIManager::resetComponent()
+{
+	this->gameObject = NULL;
+	heartUIObjs->clear();
+	health = 0;
+	destroyOnLoad = false;
+}
+
 void UIManager::lateUpdate()
 {
 

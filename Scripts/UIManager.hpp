@@ -63,6 +63,11 @@ public:
 	/// <param name="health">The health of the player</param>
 	void updateHeartUI(int health);
 
+	/// <summary>
+	/// Reset this component to the status it would be at when a scene is
+	/// first loaded
+	/// </summary>	
+	void resetComponent();
 private:
 	/// <summary>
 	/// Clamp the given value between the given min and max values

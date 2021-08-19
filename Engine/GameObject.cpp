@@ -48,8 +48,14 @@ namespace GameEngine
 		for (int i = 0; i < componentList->size(); i++)
 		{
 			Component* currComp = (*componentList)[i];
-			if(currComp->destroyOnLoad)
+			if (currComp->destroyOnLoad)
+			{
 				delete(currComp);
+			}
+			else
+			{
+				currComp->resetComponent();
+			}
 		}
 
 		componentList->clear();		

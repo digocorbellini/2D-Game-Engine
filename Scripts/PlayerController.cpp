@@ -71,7 +71,7 @@ void PlayerController::update()
 		// player has died
 		// reload scene
 		//cout << "Player has died" << endl;
-		UIMan->heartUIObjs->clear();
+		//UIMan->clearList();
 		sceneMan->loadScene(sceneMan->getActiveScene()->sceneName);
 	}
 
