@@ -70,6 +70,33 @@ namespace GameEngine
 		return NULL;
 	}
 
+	vector<ColliderComp*>* Physics::isCollidingAll(ColliderComp* collider)
+	{
+		vector<ColliderComp*>* collisions = new vector<ColliderComp*>();
+		// if given collider is not enabled, then return an empty list
+		if (!collider->getEnabled())
+			return collisions;
+
+		FloatRect colBounds = collider->getBounds();
+
+		// check for collisions with all of the enabled colliders in the game
+		// AWFUL OPTIMIZATION. MUST IMPROVE IF YOU WANT A LARGER GAME
+		for (int i = 0; i < colliders->size(); i++)
+		{
+			ColliderComp* currCol = (*colliders)[i];
+			FloatRect currBounds = currCol->getBounds();
+			if (currCol != collider
+				&& currCol->getEnabled()
+				&& colBounds.intersects(currBounds))
+			{
+				// found a collision
+				collisions->push_back(currCol);
+			}
+		}
+
+		return collisions;
+	}
+
 	ColliderComp* Physics::overlapBox(RectangleShape* box, GameLayer layer)
 	{
 		FloatRect boxBounds = box->getGlobalBounds();

@@ -162,6 +162,7 @@ void PlayerController::update()
 			// damage each individual enemy
 			cout << "attacked enemy #" << i + 1 << endl;
 		}
+		delete(collisions);
 	}
 
 

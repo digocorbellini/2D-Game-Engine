@@ -69,6 +69,15 @@ namespace GameEngine
 		ColliderComp* isColliding(ColliderComp* collider);
 
 		/// <summary>
+		/// Check to see if the given collider is colliding with any other colliders,
+		/// and if it is, then return all of the colliders it is colliding with
+		/// </summary>
+		/// <param name="collider">the collider to be checked for collisions</param>
+		/// <returns>a list of all of the colliders that the given collider is 
+		/// colliding with</returns>
+		vector<ColliderComp*>* isCollidingAll(ColliderComp* collider);
+
+		/// <summary>
 		/// Check to see if the given box is overlapping over any colliders
 		/// </summary>
 		/// <param name="box">The box to be checked against</param>
