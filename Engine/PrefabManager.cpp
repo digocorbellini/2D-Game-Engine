@@ -33,10 +33,10 @@ namespace GameEngine
         player->addComponent(playerCol);
         // controller comp
         PlayerController* playerCtlr = new PlayerController(player,
-            Vector2f(playerTexture->getSize().x * player->transform->scale.x, 25),
-            Vector2f(50, playerTexture->getSize().y * player->transform->scale.y));
+            Vector2f(playerTexture->getSize().x * player->transform->scale.x - 10, 25),
+            Vector2f(80, playerTexture->getSize().y * player->transform->scale.y));
         playerCtlr->groundCheckOffset = Vector2f(0, 35);
-        playerCtlr->attackRightOffset = Vector2f(100, 0);
+        playerCtlr->attackRightOffset = Vector2f(110, 0);
         player->addComponent(playerCtlr);
 
         return player;
@@ -141,4 +141,27 @@ namespace GameEngine
 
         return safeComp;
     }
+
+    GameObject* PrefabManager::obstaclePrefab(string spriteLocation, Vector2f posOfBottomLeft)
+    {
+        GameObject* obj = new GameObject();
+        // give it a sprite
+        Texture* texture = new Texture();
+        texture->loadFromFile(spriteLocation);
+        SpriteRenderer* sprite = new SpriteRenderer(texture, obj);
+        obj->addComponent(sprite);
+        // set it at the given location
+        float xOffset = (texture->getSize().x / 2);
+        float yOffset = (texture->getSize().y / 2);
+        obj->transform->position = Vector2f(posOfBottomLeft.x + xOffset,
+            posOfBottomLeft.y - yOffset);
+        // give it a box collider
+        BoxCollider* col = new BoxCollider(texture->getSize(), obj);
+        obj->addComponent(col);
+        // make these obstacles floors
+        obj->gameLayer = GameLayer::GROUND;
+
+        return obj;
+    }
+
 }

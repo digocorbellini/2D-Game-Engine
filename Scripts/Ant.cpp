@@ -5,7 +5,7 @@
 Ant::Ant(GameObject* gameObject)
 {
 	this->gameObject = gameObject;
-	health = new Health(2);
+	health = new Health(3);
 	physics = Physics::getInstance();
 	rb = gameObject->getComponent<Rigidbody>();
 	if (rb == NULL)
@@ -62,6 +62,15 @@ void Ant::damageEnemy(int damage)
 
 void Ant::update()
 {
+	// check to see if ant is dead
+	if (health->getHealth() <= 0)
+	{
+		// ant is dead
+
+		// TEMPORARY SOLUTION. MUST SOLVE DESTROY FUNCTION IN ENGINE FIRST
+		gameObject->setEnabled(false);
+	}
+
 	// handle movement towards player
 	// check to see if the player is within range
 	detectionBox->setSize(detectionSize);

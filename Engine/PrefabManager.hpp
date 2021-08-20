@@ -86,7 +86,9 @@ namespace GameEngine
 		/// <returns>the view panel game object</returns>
 		GameObject* viewPanelPrefab();
 
-		SafeSpace* safeSpacePrefab(string spriteLocation, Vector2f positionOfBottomRight);
+		SafeSpace* safeSpacePrefab(string spriteLocation, Vector2f posOfBottomLeft);
+
+		GameObject* obstaclePrefab(string spriteLocation, Vector2f posOfBottomLeft);
 	};
 
 }

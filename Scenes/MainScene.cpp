@@ -17,33 +17,6 @@ MainScene::~MainScene()
 
 void MainScene::loadScene()
 {
-    //// create object
-    //GameObject* mario = new GameObject();
-    //// get texture
-    //Texture* marioTexture = new Texture();
-    //marioTexture->loadFromFile("./Sprites/Mario.png");
-    //// create sprite marioRend component
-    //SpriteRenderer* marioRend = new SpriteRenderer(marioTexture, mario);
-    //// set obj and component values
-    //mario->transform->position = Vector2f(100, 800);
-    ////marioRend->scale = Vector2f(.2, .2);
-    //mario->transform->scale = Vector2f(.1, .1);
-    //// add collider to mario and gravity
-    //BoxCollider* testCol = new BoxCollider(marioTexture->getSize(), mario);
-    ////Rigidbody* gravityComp = new Rigidbody(mario);
-    ////mario->addComponent(gravityComp);
-    //mario->addComponent(testCol);
-    //// make another component
-    ////TestComp* testComp = new TestComp(mario);
-    //// add components
-    //mario->addComponent(marioRend);
-    //// mario->addComponent(testComp);
-    //// add obj to game engine
-    //engine->addGameObject(mario);
-    //mario->gameLayer = GameLayer::ENEMIES;
-    ////testCol->isTrigger = true;
-
-
     /* ========= Player Object ========= */
     GameObject* player = prefabMan->playerPrefab();
     player->transform->position = Vector2f(-500, 600);
@@ -62,6 +35,21 @@ void MainScene::loadScene()
     // give it a boxCollider
     BoxCollider* wallCol = new BoxCollider(wallTexture->getSize(), wall);
     wall->addComponent(wallCol);
+
+    /* ======= wall at the end =========== */
+    GameObject* endWall = new GameObject();
+    engine->addGameObject(endWall);
+    // give it a sprite
+    Texture* endWallTexture = new Texture();
+    endWallTexture->loadFromFile("./Sprites/cereal_box_sprite.png");
+    SpriteRenderer* endWallSprite = new SpriteRenderer(endWallTexture, endWall);
+    endWall->addComponent(endWallSprite);
+    xOffset = (endWallTexture->getSize().x / 2);
+    yOffset = (endWallTexture->getSize().y / 2);
+    endWall->transform->position = Vector2f(8448 + xOffset, 960 - yOffset);
+    // give it a boxCollider
+    BoxCollider* endWallCol = new BoxCollider(endWallTexture->getSize(), endWall);
+    endWall->addComponent(endWallCol);
 
     /* ========== Camera =========== */
     GameObject* cameraObj = prefabMan->cameraPrefab(player, screenWidth, screenHeight);
@@ -87,13 +75,6 @@ void MainScene::loadScene()
     BoxCollider* floorCol = new BoxCollider(floorColSize, floor);
     floor->addComponent(floorCol);
     floor->gameLayer = GameLayer::GROUND;
-
-    // test obj for priting and such
-    GameObject* testingObj = new GameObject();
-    engine->addGameObject(testingObj);
-    TestComp* testComp = new TestComp(testingObj);
-    testingObj->addComponent(testComp);
-    testComp->playerController = player->getComponent<PlayerController>();
 
     /* ======= Heart UI ======== */
     // ui 1
@@ -132,9 +113,36 @@ void MainScene::loadScene()
     backgroundObj->transform->position = backgroundPos;
     backgroundObj->transform->scale = Vector2f(1.08, 1.08);
 
-    /* ========= Ant ========= */
+    /* ========= Ants ========= */
     GameObject* ant1 = prefabMan->antPrefab();
-    ant1->transform->position = Vector2f(600, 0);
+    ant1->transform->position = Vector2f(400, 500);
+
+    GameObject* ant2 = prefabMan->antPrefab();
+    ant2->transform->position = Vector2f(1055, 500);
+
+    GameObject* ant3 = prefabMan->antPrefab();
+    ant3->transform->position = Vector2f(1945, 500);
+
+    GameObject* ant4 = prefabMan->antPrefab();
+    ant4->transform->position = Vector2f(2438, 500);
+
+    GameObject* ant5 = prefabMan->antPrefab();
+    ant5->transform->position = Vector2f(3558, 500);
+
+    GameObject* ant6 = prefabMan->antPrefab();
+    ant6->transform->position = Vector2f(4952, 500);
+
+    GameObject* ant7 = prefabMan->antPrefab();
+    ant7->transform->position = Vector2f(5141, 500);
+
+    GameObject* ant8 = prefabMan->antPrefab();
+    ant8->transform->position = Vector2f(5353, 500);
+
+    GameObject* ant9 = prefabMan->antPrefab();
+    ant9->transform->position = Vector2f(6017, 500);
+
+    GameObject* ant10 = prefabMan->antPrefab();
+    ant10->transform->position = Vector2f(6843, 500);
 
     /* ========= Game Manager ========== */
     GameObject* gameManager = new GameObject();
@@ -144,8 +152,8 @@ void MainScene::loadScene()
     gameManComp->addGameObject(gameManager);
     gameManager->addComponent(gameManComp);
     
-    //gameManComp->timeBetweenStates = 5;
-
+    //gameManComp->timeBetweenStates = 15;
+    gameManComp->timeBetweenStates = 1000;
 
     /* ========= safeSpaces =========*/
     SafeSpace* safeSpace3 = prefabMan->safeSpacePrefab("./Sprites/cereal_box_sprite.png",
@@ -157,26 +165,52 @@ void MainScene::loadScene()
     SafeSpace* safeSpace = prefabMan->safeSpacePrefab("./Sprites/cereal_box_sprite.png", 
                 Vector2f(1478, 853));
     gameManComp->safeSpaces->push_back(safeSpace);
+
+    SafeSpace* safeSpace4 = prefabMan->safeSpacePrefab("./Sprites/fruit_bowl_sprite.png",
+        Vector2f(6017, 853));
+    gameManComp->safeSpaces->push_back(safeSpace4);
     
+    
+    /* ========= Obstacles ========== */
+    prefabMan->obstaclePrefab("./Sprites/salt_side_sprite.png",
+        Vector2f(-192, 970));
+    prefabMan->obstaclePrefab("./Sprites/pepper_standing_sprite.png",
+        Vector2f(80, 970));
+    prefabMan->obstaclePrefab("./Sprites/salt_standing_sprite.png",
+        Vector2f(2037, 970));
+    prefabMan->obstaclePrefab("./Sprites/plate_sprite.png",
+        Vector2f(3177, 970));
+    prefabMan->obstaclePrefab("./Sprites/pepper_standing_sprite.png",
+        Vector2f(3339, 870));
+    prefabMan->obstaclePrefab("./Sprites/salt_standing_sprite.png",
+        Vector2f(3832, 870));
+    prefabMan->obstaclePrefab("./Sprites/salt_standing_sprite.png",
+        Vector2f(3832, 705));
+    prefabMan->obstaclePrefab("./Sprites/salt_standing_sprite.png",
+        Vector2f(4775, 970));
+    prefabMan->obstaclePrefab("./Sprites/pepper_standing_sprite.png",
+        Vector2f(5450, 970));
+    
+    /* ============= Final Donut ============= */
+    GameObject* donut = new GameObject();
+    engine->addGameObject(donut);
+    // give it a sprite 
+    Texture* donutTexture = new Texture();
+    donutTexture->loadFromFile("./Sprites/donut_sprite_large.png");
+    SpriteRenderer* donutSprite = new SpriteRenderer(donutTexture, donut);
+    donut->addComponent(donutSprite);
+    donutSprite->layer = RenderingLayer::FOREGROUND1;
+    // place it in the correct position
+    float xOffsetDonut = (donutTexture->getSize().x / 2);
+    float yOffsetDonut = (donutTexture->getSize().y / 2);
+    donut->transform->position = Vector2f(7802 + xOffsetDonut, 970 - yOffsetDonut);
+    // add donut component
 
 
-
-
-    //// test safe space
-    //GameObject* safeSpace1 = new GameObject();
-    //engine->addGameObject(safeSpace1);
-    //safeSpace1->transform->position = Vector2f(-1500, 0);
-    //// give it a sprite
-    //Texture* safeTexture1 = new Texture();
-    //safeTexture1->loadFromFile("./Sprites/Mario.png");
-    //SpriteRenderer* safeSpriteRend1 = new SpriteRenderer(safeTexture1, safeSpace1);
-    //safeSpace1->addComponent(safeSpriteRend1);
-    //safeSpriteRend1->layer = RenderingLayer::BACKGROUND;
-    ////safeSpriteRend1->orderInLayer = -1;
-    //// give it a safe space component
-    //SafeSpace* safeSpaceComp1 = new SafeSpace(safeSpace1);
-    //safeSpaceComp1->safeSpaceSize = Vector2f(safeTexture1->getSize());
-    //safeSpace1->addComponent(safeSpaceComp1);
-
-    //gameManComp->safeSpaces->push_back(safeSpaceComp1);
+    // test obj for priting and such
+    GameObject* testingObj = new GameObject();
+    engine->addGameObject(testingObj);
+    TestComp* testComp = new TestComp(testingObj);
+    testingObj->addComponent(testComp);
+    testComp->playerController = player->getComponent<PlayerController>();
 }
