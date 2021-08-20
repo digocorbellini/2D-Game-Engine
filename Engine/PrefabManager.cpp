@@ -164,4 +164,22 @@ namespace GameEngine
         return obj;
     }
 
+    GameObject* PrefabManager::UITextPrefab(Vector2f position)
+    {
+        GameObject* UITextObj = new GameObject();
+        engine->addGameObject(UITextObj);
+        // add UI text comp
+        Font* font = new Font();
+        font->loadFromFile("./Fonts/game_over.ttf");
+        UIText* UITextComp = new UIText(UITextObj, font);
+        UITextObj->addComponent(UITextComp);
+        // change text properties
+        UITextComp->fontSize = 150;
+        UITextComp->outlineThickness = 5;
+        // pos
+        UITextObj->transform->position = position;
+
+        return UITextObj;
+    }
+
 }

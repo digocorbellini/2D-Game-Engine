@@ -152,6 +152,7 @@
     <ClCompile Include="Scenes\MainScene.cpp" />
     <ClCompile Include="Scripts\Ant.cpp" />
     <ClCompile Include="Scripts\CameraController.cpp" />
+    <ClCompile Include="Scripts\Donut.cpp" />
     <ClCompile Include="Scripts\GameManager.cpp" />
     <ClCompile Include="Scripts\Health.cpp" />
     <ClCompile Include="Scripts\PlayerController.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="STDComps\CircleCollider.cpp" />
     <ClCompile Include="STDComps\SpriteRenderer.cpp" />
     <ClCompile Include="STDComps\UIRenderer.cpp" />
+    <ClCompile Include="STDComps\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Component.hpp" />
@@ -179,6 +181,7 @@
     <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scenes\MainScene.hpp" />
     <ClInclude Include="Scripts\Ant.hpp" />
+    <ClInclude Include="Scripts\Donut.hpp" />
     <ClInclude Include="Scripts\Enemy.hpp" />
     <ClInclude Include="Scripts\CameraController.hpp" />
     <ClInclude Include="Scripts\GameManager.hpp" />
@@ -186,6 +189,7 @@
     <ClInclude Include="Scripts\PlayerController.hpp" />
     <ClInclude Include="Scripts\SafeSpace.hpp" />
     <ClInclude Include="Scripts\UIManager.hpp" />
+    <ClInclude Include="STDComps\UIText.hpp" />
     <ClInclude Include="STDComps\CircleCollider.hpp" />
     <ClInclude Include="STDComps\Rigidbody.hpp" />
     <ClInclude Include="Scripts\TestComp.hpp" />

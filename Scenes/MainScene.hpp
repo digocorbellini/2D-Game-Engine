@@ -20,6 +20,7 @@
 #include "../Scripts/Ant.hpp"
 #include "../Scripts/SafeSpace.hpp"
 #include "../Scripts/GameManager.hpp"
+#include "../Scripts/Donut.hpp"
 
 using namespace GameEngine;
 using namespace std;

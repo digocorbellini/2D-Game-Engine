@@ -1,5 +1,5 @@
-#ifndef UI_RENDERER_H
-#define UI_RENDERER_H
+#ifndef UI_TEXT_H
+#define UI_TEXT_H
 
 #include "../Engine/Renderer.hpp"
 #include "../Engine/DrawableComp.hpp"
@@ -9,34 +9,37 @@
 using namespace sf;
 using namespace GameEngine;
 
-class UIRenderer : public DrawableComp
+
+class UIText : public DrawableComp
 {
 	/* variables */
 public:
-	Vector2f scale;
 	Color color;
-	Sprite* sprite;
+	unsigned int fontSize;
+	float outlineThickness;
+	string text;
 
 private:
 	Renderer* renderer;
 	RenderWindow* window;
 	GameObject* gameObject;
-	Texture* texture;
+	Font* font;
+	Text* textObj;
 
 	/* methods */
 public:
 	/// <summary>
-	/// Constructor for a new UIRenderer component
+	/// Constructor for a new UI Text component
 	/// </summary>
-	/// <param name="gameObject">the gameObject that this component
-	/// is attached to</param>
-	/// <param name="spriteTexture">the texture of tthe sprite</param>
-	UIRenderer(GameObject* gameObject, Texture* spriteTexture);
+	/// <param name="gameObject">the gameObject that this component is 
+	/// attached to</param>
+	/// <param name="font">the font for this text component</param>
+	UIText(GameObject* gameObject, Font* font);
 
 	/// <summary>
-	/// Destructor for a UIRenderer component
+	/// Destructor for a UIText component
 	/// </summary>
-	~UIRenderer();
+	~UIText();
 
 	/// <summary>
 	/// called every frame by the renderer in the render queue
@@ -52,6 +55,7 @@ public:
 	/// Called every frame after update. Used to handle physics and collisions
 	/// </summary>
 	void lateUpdate();
-};
 
-#endif
+};
+#endif // !UI_TEXT_H
+

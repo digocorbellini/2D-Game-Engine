@@ -11,6 +11,7 @@
 #include "SafeSpace.hpp"
 #include "PlayerController.hpp"
 #include <vector>
+#include "../STDComps/UIText.hpp"
 
 using namespace GameEngine;
 using namespace std;
@@ -30,10 +31,14 @@ private:
 	GameObject* gameObject;
 	Engine* engine;
 	Physics* physics;
+	PrefabManager* prefabMan;
 	PlayerController* playerController;
 	float elapsedTime;
 	bool isSafe;
 	UIRenderer* viewPanel;
+	UIText* timeCounter;
+	float counter;
+	Vector2f counterPos = Vector2f(500, 0);
 
 	/* methods */
 

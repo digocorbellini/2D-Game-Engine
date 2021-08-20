@@ -14,9 +14,15 @@ GameManager::GameManager()
 	isSafe = true;
 	elapsedTime = 0;
 	viewPanel = NULL;
+	counter = 0;
 
-	GameObject* viewPanelObj = PrefabManager::getInstance()->viewPanelPrefab();
+	prefabMan = PrefabManager::getInstance();
+
+	GameObject* viewPanelObj = prefabMan->viewPanelPrefab();
 	viewPanel = viewPanelObj->getComponent<UIRenderer>();
+
+	GameObject* UITextObj = prefabMan->UITextPrefab(counterPos);
+	timeCounter = UITextObj->getComponent<UIText>();
 }
 
 void GameManager::addGameObject(GameObject* gameObject)
@@ -31,8 +37,11 @@ void GameManager::addGameObject(GameObject* gameObject)
 		playerController = playerObj->getComponent<PlayerController>();
 	}
 	
-	GameObject* viewPanelObj = PrefabManager::getInstance()->viewPanelPrefab();
+	GameObject* viewPanelObj = prefabMan->viewPanelPrefab();
 	viewPanel = viewPanelObj->getComponent<UIRenderer>();
+
+	GameObject* UITextObj = prefabMan->UITextPrefab(counterPos);
+	timeCounter = UITextObj->getComponent<UIText>();
 }
 
 GameManager::~GameManager()
@@ -54,6 +63,12 @@ void GameManager::update()
 		return;
 	}
 
+	if (timeCounter == NULL)
+	{
+		cout << "time counter is null in game manager" << endl;
+		return;
+	}
+
 	// switch between safe and unsafe states
 	elapsedTime += engine->getDeltaTime();
 	// check to see if the current state has elapsed
@@ -66,6 +81,14 @@ void GameManager::update()
 
 		cout << "is safe: " << isSafe << endl;
 	}
+
+	counter -= engine->getDeltaTime();
+	if (counter <= 0)
+	{
+		counter = timeBetweenStates;
+	}
+
+	timeCounter->text = to_string((int)counter);
 
 	if (!isSafe)
 	{
@@ -118,4 +141,6 @@ void GameManager::resetComponent()
 	isSafe = true;
 	elapsedTime = 0;
 	viewPanel = NULL;
+	timeCounter = NULL;
+	counter = 0;
 }

@@ -17,7 +17,7 @@ using namespace GameEngine;
 
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
-const bool gizmosOn = true;
+const bool gizmosOn = false;
 
 Engine* engine;
 Renderer* renderer;

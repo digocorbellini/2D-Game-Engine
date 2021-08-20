@@ -11,6 +11,7 @@
 #include "../STDComps/Rigidbody.hpp"
 #include "../STDComps/CircleCollider.hpp"
 #include "../STDComps/UIRenderer.hpp"
+#include "../STDComps/UIText.hpp"
 
 #include "../Scripts/CameraController.hpp"
 #include "../Scripts/PlayerController.hpp"
@@ -105,6 +106,8 @@ namespace GameEngine
 		/// of the safe space game object</param>
 		/// <returns>the obstacle game object</returns>
 		GameObject* obstaclePrefab(string spriteLocation, Vector2f posOfBottomLeft);
+
+		GameObject* UITextPrefab(Vector2f position);
 	};
 
 }

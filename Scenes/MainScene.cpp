@@ -152,8 +152,8 @@ void MainScene::loadScene()
     gameManComp->addGameObject(gameManager);
     gameManager->addComponent(gameManComp);
     
-    //gameManComp->timeBetweenStates = 15;
-    gameManComp->timeBetweenStates = 1000;
+    gameManComp->timeBetweenStates = 15;
+    //gameManComp->timeBetweenStates = 1000;
 
     /* ========= safeSpaces =========*/
     SafeSpace* safeSpace3 = prefabMan->safeSpacePrefab("./Sprites/cereal_box_sprite.png",
@@ -205,7 +205,9 @@ void MainScene::loadScene()
     float yOffsetDonut = (donutTexture->getSize().y / 2);
     donut->transform->position = Vector2f(7802 + xOffsetDonut, 970 - yOffsetDonut);
     // add donut component
-
+    Donut* donutComp = new Donut(donut);
+    donutComp->detectionSize = Vector2f(donutTexture->getSize());
+    donut->addComponent(donutComp);
 
     // test obj for priting and such
     GameObject* testingObj = new GameObject();
