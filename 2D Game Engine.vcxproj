@@ -203,7 +203,7 @@
     <Image Include="Sprites\ant_sprite.png" />
     <Image Include="Sprites\background_sprite.png" />
     <Image Include="Sprites\bob.png" />
-    <Image Include="Sprites\cereal_box_sprite_1.png" />
+    <Image Include="Sprites\cereal_box_sprite.png" />
     <Image Include="Sprites\cockroach_sprite.png" />
     <Image Include="Sprites\donut_sprite.png" />
     <Image Include="Sprites\donut_sprite_large.png" />

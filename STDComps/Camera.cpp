@@ -16,7 +16,7 @@ Camera::~Camera()
 void Camera::update()
 {
 	// make camera stay centered on the gameObject
-	cameraView->setCenter(gameObject->transform->position);
+	cameraView->setCenter(gameObject->transform->position + posOffset);
 	// set the view
 	window->setView(*cameraView);
 }

@@ -75,6 +75,7 @@ namespace GameEngine
         // camera comp
         Camera* cameraComp = new Camera(FloatRect(screenWidth / 2, screenHeight / 2, 1280, 720), cameraObj);
         cameraObj->addComponent(cameraComp);
+        cameraComp->posOffset = Vector2f(0, -100);
         // cam controller
         CameraController* camCtrl = new CameraController(cameraObj, target->transform,
             10, 0.5);
@@ -105,12 +106,39 @@ namespace GameEngine
         UIRenderer* panelRend = new UIRenderer(viewPanel, viewTexture);
         viewPanel->addComponent(panelRend);
         // set order in layer and layer
-        panelRend->orderInLayer = -1;
+        panelRend->layer = RenderingLayer::BACKGROUND_FILTER;
+        panelRend->orderInLayer = 0;
         // scale to fit the whole screen
         viewPanel->transform->scale = Vector2f(3, 3);
         // make it transparent
         panelRend->color.a = 0;
 
         return viewPanel;
+    }
+
+    SafeSpace* PrefabManager::safeSpacePrefab(string spriteLocation, Vector2f posOfBottomLeft)
+    {
+        GameObject* obj = new GameObject();
+        engine->addGameObject(obj);
+        // give it a sprite
+        Texture* texture = new Texture();
+        texture->loadFromFile(spriteLocation);
+        SpriteRenderer* sprite = new SpriteRenderer(texture, obj);
+        obj->addComponent(sprite);
+        sprite->layer = RenderingLayer::FOREGROUND1;
+        // set it at the given position
+        float xOffset = (texture->getSize().x / 2);
+        float yOffset = (texture->getSize().y / 2);
+        obj->transform->position = Vector2f(posOfBottomLeft.x + xOffset, 
+                posOfBottomLeft.y - yOffset);
+        // safe space component
+        SafeSpace* safeComp = new SafeSpace(obj);
+        Vector2f safeSpaceSize;
+        safeSpaceSize.x = texture->getSize().x;
+        safeSpaceSize.y = texture->getSize().y + 200;
+        safeComp->safeSpaceSize = safeSpaceSize;
+        obj->addComponent(safeComp);
+
+        return safeComp;
     }
 }

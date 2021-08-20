@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../Engine/Layers.hpp"
+
 #include "../STDComps/SpriteRenderer.hpp"
 #include "../STDComps/BoxCollider.hpp"
 #include "../STDComps/Camera.hpp"
@@ -15,6 +17,7 @@
 #include "../Scripts/UIManager.hpp"
 #include "../Scripts/TestComp.hpp"
 #include "../Scripts/Ant.hpp"
+#include "../Scripts/SafeSpace.hpp"
 
 using namespace std;
 using namespace sf;
@@ -82,6 +85,8 @@ namespace GameEngine
 		/// </summary>
 		/// <returns>the view panel game object</returns>
 		GameObject* viewPanelPrefab();
+
+		SafeSpace* safeSpacePrefab(string spriteLocation, Vector2f positionOfBottomRight);
 	};
 
 }

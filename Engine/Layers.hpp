@@ -12,6 +12,8 @@ enum class GameLayer
 enum class RenderingLayer
 {
 	BACKGROUND,
+	BACKGROUND_FILTER,
+	FOREGROUND1,
 	DEFAULT, // all drawable components are automatically set to this
 	UIELEMENT // all UIRenderer components are automatically set to this
 };

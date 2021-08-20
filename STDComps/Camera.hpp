@@ -14,6 +14,7 @@ class Camera : public Component
 	/* Variables */
 public:
 	GameObject* gameObject;
+	Vector2f posOffset;
 
 private:
 	View* cameraView;

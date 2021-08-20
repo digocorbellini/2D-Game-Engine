@@ -14,6 +14,7 @@ class BoxCollider : public ColliderComp
 	/* variables */
 public:
 	Vector2f size;
+	Vector2f offset;
 
 private:
 	GameObject* gameObject;

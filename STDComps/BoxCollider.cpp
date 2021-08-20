@@ -4,7 +4,7 @@ BoxCollider::BoxCollider(Vector2u size, GameObject* gameObject)
 {
 	this->size = Vector2f(size);
 	this->gameObject = gameObject;
-	oldPos = gameObject->transform->position;
+	oldPos = gameObject->transform->position + offset;
 	box = new RectangleShape(this->size);
 	// set the origin to the center of the rectangle
 	box->setOrigin(box->getSize().x / 2, box->getSize().y / 2);
@@ -55,19 +55,19 @@ void BoxCollider::lateUpdate()
 
 	// handle collisions
 	// test new position for collision
-	box->setPosition(gameObject->transform->position);
+	box->setPosition(gameObject->transform->position + offset);
 	vector<ColliderComp*>* collisions = physics->isCollidingAll(this);
 
 	if (collisions->size() == 0)
 	{
 		// no collision so replace old position with new position
-		oldPos = gameObject->transform->position;
+		oldPos = gameObject->transform->position + offset;
 	}
 	else
 	{
 		// collision occured so have to move back to a position where
 		// there is no collision
-		Vector2f currPos = gameObject->transform->position;
+		Vector2f currPos = gameObject->transform->position + offset;
 		Vector2f newPos = oldPos;
 
 		RectangleShape testShape(box->getSize());
@@ -114,7 +114,7 @@ void BoxCollider::lateUpdate()
 		oldPos = newPos;
 
 		// collision occured so move object back to old position
-		gameObject->transform->position = oldPos;
+		gameObject->transform->position = oldPos - offset;
 		box->setPosition(oldPos);
 	}
 	delete(collisions);
