@@ -86,8 +86,24 @@ namespace GameEngine
 		/// <returns>the view panel game object</returns>
 		GameObject* viewPanelPrefab();
 
+		/// <summary>
+		/// Instantiate a safe space game object
+		/// </summary>
+		/// <param name="spriteLocation">the location of the sprite for this
+		/// safe space object</param>
+		/// <param name="posOfBottomLeft">the position of the bottom left corner
+		/// of the safe space game object</param>
+		/// <returns>a reference to the safe space component</returns>
 		SafeSpace* safeSpacePrefab(string spriteLocation, Vector2f posOfBottomLeft);
 
+		/// <summary>
+		/// Instantiate a obstacle game object
+		/// </summary>
+		/// <param name="spriteLocation">the location of the sprite for this
+		/// obstacle game object</param>
+		/// <param name="posOfBottomLeft">the position of the bottom left corner
+		/// of the safe space game object</param>
+		/// <returns>the obstacle game object</returns>
 		GameObject* obstaclePrefab(string spriteLocation, Vector2f posOfBottomLeft);
 	};
 
