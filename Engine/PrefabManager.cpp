@@ -25,22 +25,18 @@ namespace GameEngine
         player->addComponent(playerRB);
         // sprite renderer comp
         Texture* playerTexture = new Texture();
-        playerTexture->loadFromFile("./Sprites/Mario.png");
+        playerTexture->loadFromFile("./Sprites/cockroach_sprite.png");
         SpriteRenderer* playerRend = new SpriteRenderer(playerTexture, player);
         player->addComponent(playerRend);
-
-        // TEMPORARY
-        player->transform->scale = Vector2f(.1, .1);
-
         // collider component
         BoxCollider* playerCol = new BoxCollider(playerTexture->getSize(), player);
         player->addComponent(playerCol);
         // controller comp
         PlayerController* playerCtlr = new PlayerController(player,
-            Vector2f(playerTexture->getSize().x * player->transform->scale.x, 50),
-            Vector2f(200, playerTexture->getSize().y * player->transform->scale.y));
-        playerCtlr->groundCheckOffset = Vector2f(0, 100);
-        playerCtlr->attackRightOffset = Vector2f(200, 0);
+            Vector2f(playerTexture->getSize().x * player->transform->scale.x, 25),
+            Vector2f(50, playerTexture->getSize().y * player->transform->scale.y));
+        playerCtlr->groundCheckOffset = Vector2f(0, 35);
+        playerCtlr->attackRightOffset = Vector2f(100, 0);
         player->addComponent(playerCtlr);
 
         return player;
@@ -52,7 +48,7 @@ namespace GameEngine
         engine->addGameObject(ant);
         // give ant a sprite
         Texture* antTexture = new Texture();
-        antTexture->loadFromFile("./Sprites/bob.png");
+        antTexture->loadFromFile("./Sprites/ant_sprite.png");
         SpriteRenderer* antSpriteRend = new SpriteRenderer(antTexture, ant);
         ant->addComponent(antSpriteRend);
         // give ant a rigidbody
@@ -92,12 +88,9 @@ namespace GameEngine
         GameObject* heart = new GameObject();
         engine->addGameObject(heart);
         Texture* heartTexture = new Texture();
-        heartTexture->loadFromFile("./Sprites/bob.png");
+        heartTexture->loadFromFile("./Sprites/heart_sprite.png");
         UIRenderer* heartUIRend = new UIRenderer(heart, heartTexture);
         heart->addComponent(heartUIRend);
-        
-        // TEMPORARY
-        heart->transform->scale = Vector2f(.5, .5);
 
         return heart;
     }

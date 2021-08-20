@@ -175,7 +175,7 @@ void PlayerController::update()
 	{
 		timeElapsed += engine->getDeltaTime();
 		// make player semi transparent
-		newColor.a = 180;
+		newColor.a = 100;
 		spriteRenderer->color = newColor;
 
 		// check to see if invinsibility time has elapsed

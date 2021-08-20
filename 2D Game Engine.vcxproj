@@ -200,8 +200,22 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Sprites\ant_sprite.png" />
+    <Image Include="Sprites\background_sprite.png" />
     <Image Include="Sprites\bob.png" />
+    <Image Include="Sprites\cereal_box_sprite_1.png" />
+    <Image Include="Sprites\cockroach_sprite.png" />
+    <Image Include="Sprites\donut_sprite.png" />
+    <Image Include="Sprites\donut_sprite_large.png" />
+    <Image Include="Sprites\fruit_bowl_sprite.png" />
+    <Image Include="Sprites\heart_sprite.png" />
     <Image Include="Sprites\Mario.png" />
+    <Image Include="Sprites\pepper_side_sprite.png" />
+    <Image Include="Sprites\pepper_standing_sprite.png" />
+    <Image Include="Sprites\plate_sprite.png" />
+    <Image Include="Sprites\salt_side_sprite.png" />
+    <Image Include="Sprites\salt_standing_sprite.png" />
+    <Image Include="Sprites\table_sprite.png" />
     <Image Include="Sprites\white_square.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
