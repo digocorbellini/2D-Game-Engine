@@ -6,6 +6,7 @@
 #include "../Engine/Physics.hpp"
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Layers.hpp"
+#include "../Engine/SceneManager.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace GameEngine;
@@ -23,6 +24,7 @@ private:
 	RectangleShape* detectionBox;
 	Renderer* renderer;
 	Physics* physics;
+	SceneManager* sceneMan;
 	
 
 	/* methods */

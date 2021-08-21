@@ -77,15 +77,21 @@ void MainScene::loadScene()
     floor->gameLayer = GameLayer::GROUND;
 
     /* ======= Heart UI ======== */
+    // make the positions of these relative to the width of the window
+    RenderWindow* window = engine->getWindow();
+    float fractionOfWinWidth = window->getSize().x / 9;
+    float paddingBetweenHearts = window->getSize().x / 14;
+    float fractionOfWinHeight = window->getSize().y / 10;
     // ui 1
     GameObject* heartUI1 = prefabMan->UIHeartPrefab();
-    heartUI1->transform->position = Vector2f(80, 80);
+    heartUI1->transform->position = Vector2f(fractionOfWinWidth / 2, fractionOfWinHeight);
     // ui 2
     GameObject* heartUI2 = prefabMan->UIHeartPrefab();
-    heartUI2->transform->position = Vector2f(160 + 20, 80);
+    heartUI2->transform->position = Vector2f(heartUI1->transform->position.x + paddingBetweenHearts, fractionOfWinHeight);
     // ui 3
     GameObject* heartUI3 = prefabMan->UIHeartPrefab();
-    heartUI3->transform->position = Vector2f(240 + 40, 80);
+    heartUI3->transform->position = Vector2f(heartUI2->transform->position.x + paddingBetweenHearts, fractionOfWinHeight);
+    // ui 3, fractionOfWinHeight);
 
     /* ========= UI Manager ========= */
     GameObject* UIManagerObj = new GameObject();
@@ -151,9 +157,11 @@ void MainScene::loadScene()
     GameManager* gameManComp = GameManager::getInstance();
     gameManComp->addGameObject(gameManager);
     gameManager->addComponent(gameManComp);
+    gameManComp->counterPos = Vector2f(heartUI3->transform->position.x + paddingBetweenHearts * 1.5,
+            fractionOfWinHeight / 4);
     
     gameManComp->timeBetweenStates = 15;
-    //gameManComp->timeBetweenStates = 1000;
+    gameManComp->timeBetweenStates = 1000;
 
     /* ========= safeSpaces =========*/
     SafeSpace* safeSpace3 = prefabMan->safeSpacePrefab("./Sprites/cereal_box_sprite.png",

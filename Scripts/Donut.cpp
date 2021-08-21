@@ -9,6 +9,7 @@ Donut::Donut(GameObject* gameObject)
 	this->gameObject = gameObject;
 	renderer = Renderer::getInstance();
 	physics = Physics::getInstance();
+	sceneMan = SceneManager::getInstance();
 
 	// create detection box
 	detectionBox = new RectangleShape(detectionSize);
@@ -40,6 +41,7 @@ void Donut::update()
 	{
 		// player has reached the end
 		cout << "player has won!" << endl;
+		sceneMan->loadScene("victory scene");
 	}
 }
 

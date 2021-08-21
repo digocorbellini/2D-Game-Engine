@@ -5,6 +5,7 @@
 #include <Windows.h>
 
 #include "Scenes/MainScene.hpp"
+#include "Scenes/VictoryScene.hpp"
 
 // for checking for memory leaks
 #define _CRTDBG_MAP_ALLOC //to get more details
@@ -18,6 +19,7 @@ using namespace GameEngine;
 const int SCREEN_WIDTH = 1920;
 const int SCREEN_HEIGHT = 1080;
 const bool gizmosOn = false;
+const bool isFullScreen = true;
 
 Engine* engine;
 Renderer* renderer;
@@ -39,7 +41,7 @@ int main()
     
     // create game engine
     engine = Engine::getInstance();
-    engine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT));
+    engine->setWindowDimensions(Vector2u(SCREEN_WIDTH, SCREEN_HEIGHT), isFullScreen);
 
     // set gizmos
     renderer = Renderer::getInstance();
@@ -54,6 +56,8 @@ int main()
     // make scenes and add them to scene manager
     MainScene* mainScene = new MainScene("main scene");
     sceneManager->addScene(mainScene);
+    VictoryScene* victoryScene = new VictoryScene("victory scene");
+    sceneManager->addScene(victoryScene);
     
     // load scene
     sceneManager->loadScene("main scene");

@@ -66,7 +66,7 @@ namespace GameEngine
 		/// </summary>
 		/// <param name="dimensions">the dimensions of the window
 		/// with x being the width and y being the height</param>
-		void setWindowDimensions(Vector2u dimensions);
+		void setWindowDimensions(Vector2u dimensions, bool isFullScreen);
 
 		/// <summary>
 		/// Start the game loop in this engine. Window dimensions MUST 

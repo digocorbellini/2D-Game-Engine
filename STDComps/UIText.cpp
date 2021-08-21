@@ -15,7 +15,7 @@ UIText::UIText(GameObject* gameObject, Font* font)
 	textObj->setFont(*font);
 	textObj->setFillColor(color);
 	textObj->setCharacterSize(fontSize);
-	textObj->setOrigin(Vector2f(fontSize / 2, fontSize / 2));
+	//textObj->setOrigin(Vector2f(fontSize / 2, fontSize / 2));
 	textObj->setOutlineThickness(outlineThickness);
 
 	layer = RenderingLayer::UIELEMENT;

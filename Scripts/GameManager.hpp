@@ -25,6 +25,7 @@ public:
 	float timeBetweenStates = 30;
 	vector<SafeSpace*>* safeSpaces; // hold all the safeSpaces on the map
 	GameLayer playerLayer = GameLayer::PLAYER;
+	Vector2f counterPos = Vector2f(500, 0);
 
 private:
 	static GameManager* instance; // make this class a singleton
@@ -37,8 +38,8 @@ private:
 	bool isSafe;
 	UIRenderer* viewPanel;
 	UIText* timeCounter;
+	GameObject* UITextObj;
 	float counter;
-	Vector2f counterPos = Vector2f(500, 0);
 
 	/* methods */
 

@@ -150,6 +150,7 @@
     <ClCompile Include="Engine\SceneManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scenes\MainScene.cpp" />
+    <ClCompile Include="Scenes\VictoryScene.cpp" />
     <ClCompile Include="Scripts\Ant.cpp" />
     <ClCompile Include="Scripts\CameraController.cpp" />
     <ClCompile Include="Scripts\Donut.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Engine\Layers.hpp" />
     <ClInclude Include="Engine\Renderer.hpp" />
     <ClInclude Include="Scenes\MainScene.hpp" />
+    <ClInclude Include="Scenes\VictoryScene.hpp" />
     <ClInclude Include="Scripts\Ant.hpp" />
     <ClInclude Include="Scripts\Donut.hpp" />
     <ClInclude Include="Scripts\Enemy.hpp" />
@@ -220,6 +222,7 @@
     <Image Include="Sprites\salt_side_sprite.png" />
     <Image Include="Sprites\salt_standing_sprite.png" />
     <Image Include="Sprites\table_sprite.png" />
+    <Image Include="Sprites\victory_screen.png" />
     <Image Include="Sprites\white_square.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

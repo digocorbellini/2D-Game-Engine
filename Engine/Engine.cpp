@@ -19,12 +19,23 @@ namespace GameEngine
 		delete(window);
 	}
 
-	void Engine::setWindowDimensions(Vector2u dimensions)
+	void Engine::setWindowDimensions(Vector2u dimensions, bool isFullScreen)
 	{
 		// make sure a window has been made first before setting the dimensions
 		if (window == NULL)
 		{
-			window = new RenderWindow(VideoMode(dimensions.x, dimensions.y), "game", Style::Close);
+			if (isFullScreen)
+			{
+				window = new RenderWindow(VideoMode::getFullscreenModes()[0], "game",
+					Style::Fullscreen);
+			}
+			else
+			{
+				window = new RenderWindow(VideoMode(dimensions.x, dimensions.y), "game",
+					Style::Close);
+			}
+			
+			
 			renderer->setWindow(window);
 		}
 		else

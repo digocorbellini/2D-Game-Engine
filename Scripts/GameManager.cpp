@@ -21,7 +21,7 @@ GameManager::GameManager()
 	GameObject* viewPanelObj = prefabMan->viewPanelPrefab();
 	viewPanel = viewPanelObj->getComponent<UIRenderer>();
 
-	GameObject* UITextObj = prefabMan->UITextPrefab(counterPos);
+	UITextObj = prefabMan->UITextPrefab(counterPos);
 	timeCounter = UITextObj->getComponent<UIText>();
 }
 
@@ -40,7 +40,7 @@ void GameManager::addGameObject(GameObject* gameObject)
 	GameObject* viewPanelObj = prefabMan->viewPanelPrefab();
 	viewPanel = viewPanelObj->getComponent<UIRenderer>();
 
-	GameObject* UITextObj = prefabMan->UITextPrefab(counterPos);
+	UITextObj = prefabMan->UITextPrefab(counterPos);
 	timeCounter = UITextObj->getComponent<UIText>();
 }
 
@@ -68,6 +68,8 @@ void GameManager::update()
 		cout << "time counter is null in game manager" << endl;
 		return;
 	}
+
+	UITextObj->transform->position = counterPos;
 
 	// switch between safe and unsafe states
 	elapsedTime += engine->getDeltaTime();

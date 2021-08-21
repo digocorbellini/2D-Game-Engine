@@ -87,6 +87,9 @@
     <ClCompile Include="STDComps\UIText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scenes\VictoryScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Test.h">
@@ -179,6 +182,9 @@
     <ClInclude Include="STDComps\UIText.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Scenes\VictoryScene.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -234,6 +240,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Sprites\table_sprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\victory_screen.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
