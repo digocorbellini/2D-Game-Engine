@@ -161,7 +161,7 @@ void MainScene::loadScene()
             fractionOfWinHeight / 4);
     
     gameManComp->timeBetweenStates = 15;
-    gameManComp->timeBetweenStates = 1000;
+    //gameManComp->timeBetweenStates = 1000;
 
     /* ========= safeSpaces =========*/
     SafeSpace* safeSpace3 = prefabMan->safeSpacePrefab("./Sprites/cereal_box_sprite.png",
