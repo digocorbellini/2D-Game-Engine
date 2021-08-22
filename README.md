@@ -25,4 +25,11 @@ Holds all of the code that will be used to make the game
 ### [./Scenes](Scenes)
 Holds all of the scenes in the game
 
+## Game
+[Bug Rush](https://digocorbellini.itch.io/bug-rush)
+
+You are a hungry cockroach that has spotted a half eaten donut on the other side of the kitchen table that looks prefect for the taking! However, the owner of the house is out for you! Every time they walk into the kitchen and switch on the lights, you're in danger! 
+
+Cross the kitchen table while avoiding enemy bugs and hiding from the lights behind objects in order to reach the sugary delight!
+
 
