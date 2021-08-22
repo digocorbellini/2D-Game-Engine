@@ -37,7 +37,7 @@ int main()
     //_CrtMemCheckpoint(&sOld); //take a snapchot
 
     // hide console window
-    //::ShowWindow(::GetConsoleWindow(), SW_HIDE);
+    ::ShowWindow(::GetConsoleWindow(), SW_HIDE);
     
     // create game engine
     engine = Engine::getInstance();
