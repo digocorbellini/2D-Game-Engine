@@ -160,6 +160,7 @@
     <ClCompile Include="Scripts\SafeSpace.cpp" />
     <ClCompile Include="Scripts\TestComp.cpp" />
     <ClCompile Include="Scripts\UIManager.cpp" />
+    <ClCompile Include="STDComps\Animation.cpp" />
     <ClCompile Include="STDComps\Rigidbody.cpp" />
     <ClCompile Include="STDComps\BoxCollider.cpp" />
     <ClCompile Include="STDComps\Camera.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Scripts\PlayerController.hpp" />
     <ClInclude Include="Scripts\SafeSpace.hpp" />
     <ClInclude Include="Scripts\UIManager.hpp" />
+    <ClInclude Include="STDComps\Animation.hpp" />
     <ClInclude Include="STDComps\UIText.hpp" />
     <ClInclude Include="STDComps\CircleCollider.hpp" />
     <ClInclude Include="STDComps\Rigidbody.hpp" />
@@ -207,6 +209,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Sprites\ant_sprite.png" />
+    <Image Include="Sprites\attack_anim\attack_anim1.png" />
+    <Image Include="Sprites\attack_anim\attack_anim2.png" />
+    <Image Include="Sprites\attack_anim\attack_anim3.png" />
+    <Image Include="Sprites\attack_anim\attack_anim4.png" />
     <Image Include="Sprites\background_sprite.png" />
     <Image Include="Sprites\bob.png" />
     <Image Include="Sprites\cereal_box_sprite.png" />

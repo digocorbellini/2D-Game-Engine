@@ -57,6 +57,44 @@ PlayerController::PlayerController(GameObject* gameObject, Vector2f groundCheckS
 	UIMan = UIManager::getInstance();
 
 	sceneMan = SceneManager::getInstance();
+
+	// make attack animation
+
+	// THIS CAUSES MEMORY LEAKS. MAKE SURE TO CLEAN THIS UP LATER
+	Texture* sp1T = new Texture();
+	sp1T->loadFromFile("./Sprites/attack_anim/attack_anim1.png");
+	Sprite* sp1 = new Sprite();
+	sp1->setTexture(*sp1T);
+	sp1->setOrigin(Vector2f(sp1T->getSize().x / 2, sp1T->getSize().y / 2));
+
+	Texture* sp2T = new Texture();
+	sp2T->loadFromFile("./Sprites/attack_anim/attack_anim2.png");
+	Sprite* sp2 = new Sprite();
+	sp2->setTexture(*sp2T);
+	sp2->setOrigin(Vector2f(sp2T->getSize().x / 2, sp2T->getSize().y / 2));
+
+	Texture* sp3T = new Texture();
+	sp3T->loadFromFile("./Sprites/attack_anim/attack_anim3.png");
+	Sprite* sp3 = new Sprite();
+	sp3->setTexture(*sp3T);
+	sp3->setOrigin(Vector2f(sp3T->getSize().x / 2, sp3T->getSize().y / 2));
+
+	Texture* sp4T = new Texture();
+	sp4T->loadFromFile("./Sprites/attack_anim/attack_anim4.png");
+	Sprite* sp4 = new Sprite();
+	sp4->setTexture(*sp4T);
+	sp4->setOrigin(Vector2f(sp4T->getSize().x / 2, sp4T->getSize().y / 2));
+
+	vector<Sprite*>* anim = new vector<Sprite*>();
+	anim->push_back(sp1);
+	anim->push_back(sp2);
+	anim->push_back(sp3);
+	anim->push_back(sp4);
+
+	animObj = new GameObject();
+	engine->addGameObject(animObj);
+	attackAnim = new Animation(animObj, anim);
+	animObj->addComponent(attackAnim);
 }
 
 PlayerController::~PlayerController()
@@ -144,11 +182,19 @@ void PlayerController::update()
 	{
 		// make the attack box face right
 		attackBox->setPosition(gameObject->transform->position + attackRightOffset);
+
+		// set anim position
+		animObj->transform->position = gameObject->transform->position + attackRightOffset;
+		animObj->transform->scale.x = abs(animObj->transform->scale.x);
 	}
 	else
 	{
 		// make the attack box face left
 		attackBox->setPosition(gameObject->transform->position - attackRightOffset);
+
+		// set anim position
+		animObj->transform->position = gameObject->transform->position - attackRightOffset;
+		animObj->transform->scale.x = -abs(animObj->transform->scale.x);
 	}
 
 	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Space)
@@ -167,6 +213,9 @@ void PlayerController::update()
 			}
 		}
 		delete(collisions);
+
+		// play attack anim
+		attackAnim->playAnimation();
 	}
 
 	// handle invincibility from taking damage

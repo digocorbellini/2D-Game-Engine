@@ -11,6 +11,7 @@
 #include "Health.hpp"
 #include "Enemy.hpp"
 #include "../STDComps/SpriteRenderer.hpp"
+#include "../STDComps/Animation.hpp"
 
 using namespace GameEngine;
 
@@ -44,6 +45,8 @@ private:
 	bool facingRight;
 	float timeElapsed = 0;
 	bool isInvincible = false;
+	Animation* attackAnim;
+	GameObject* animObj;
 
 	/* Methods */
 public:

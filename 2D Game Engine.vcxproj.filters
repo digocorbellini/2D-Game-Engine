@@ -90,6 +90,9 @@
     <ClCompile Include="Scenes\VictoryScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="STDComps\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Test.h">
@@ -185,6 +188,9 @@
     <ClInclude Include="Scenes\VictoryScene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="STDComps\Animation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -243,6 +249,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Sprites\victory_screen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\attack_anim\attack_anim1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\attack_anim\attack_anim2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\attack_anim\attack_anim3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\attack_anim\attack_anim4.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
