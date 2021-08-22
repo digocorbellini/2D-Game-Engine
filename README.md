@@ -17,7 +17,7 @@ Make a 2D game engine using CPP and SFML and then make a small game with it
 
 ## Project stucture
 ### [./Engine](Engine)
-Holds all of the files that either handle the game systems (Game loop, physics, and scene management) aswell as abstract classes used to make components and scenes.
+Holds all of the files that either handle the game systems (Game loop, physics, and scene management) as well as abstract classes used to make components and scenes.
 ### [./STDComp](STDComp)
 Holds general components that implement features which are intented to be used in most games (BoxCollider, SpriteRenderer, etc).
 ### [./Scripts](Scripts)
