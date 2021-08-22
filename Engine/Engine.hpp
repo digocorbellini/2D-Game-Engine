@@ -27,7 +27,9 @@ namespace GameEngine
 		RenderWindow* window;
 		float deltaTime;
 		Renderer* renderer;
-		bool shouldClearList = false;		
+		bool shouldClearList = false;	
+		bool shouldQuit = false;
+
 
 		/* functions */
 
@@ -118,6 +120,11 @@ namespace GameEngine
 		/// <returns>a reference to the first game object found with the 
 		/// given tag or NULL if no game object with the given tag is found</returns>
 		GameObject* findGameObjectWithTag(string tag);
+
+		/// <summary>
+		/// Quit the game
+		/// </summary>
+		void quit();
 
 	private:
 		void clearList();

@@ -55,7 +55,7 @@ namespace GameEngine
 			if (window->pollEvent(event))
 			{
 				// check for the closing of the window
-				if (event.type == Event::Closed)
+				if (event.type == Event::Closed || shouldQuit)
 				{
 					// close window
 					window->close();
@@ -189,5 +189,10 @@ namespace GameEngine
 
 		// no gameObject found with the given tag
 		return NULL;
+	}
+
+	void Engine::quit()
+	{
+		shouldQuit = true;
 	}
 }

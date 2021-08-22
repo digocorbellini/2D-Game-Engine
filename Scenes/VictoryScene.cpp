@@ -31,6 +31,9 @@ void VictoryScene::loadScene()
     backgroundObj->transform->position = backgroundPos;
     backgroundObj->transform->scale = Vector2f(1.08, 1.08);
 
-
-
+    /* ========== retry component ============ */
+    GameObject* retryObj = new GameObject();
+    engine->addGameObject(retryObj);
+    VictorySceneMan* vicMan = new VictorySceneMan(retryObj);
+    retryObj->addComponent(vicMan);
 }

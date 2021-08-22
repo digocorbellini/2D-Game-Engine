@@ -6,6 +6,7 @@
 #include "../Engine/Engine.hpp"
 #include "../STDComps/UIRenderer.hpp"
 #include "../Engine/Layers.hpp"
+#include "../Scripts/VictorySceneMan.hpp"
 
 using namespace GameEngine;
 using namespace sf;

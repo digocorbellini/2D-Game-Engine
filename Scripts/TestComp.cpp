@@ -12,6 +12,12 @@ void TestComp::update()
         SceneManager* man = SceneManager::getInstance();
         man->loadScene(man->getActiveScene()->sceneName);
     }
+       
+    // end game
+    if (Keyboard::isKeyPressed(Keyboard::Escape))
+    {
+        engine->quit();
+    }
 
     //if (Keyboard::isKeyPressed(Keyboard::Escape))
     //{

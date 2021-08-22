@@ -160,6 +160,7 @@
     <ClCompile Include="Scripts\SafeSpace.cpp" />
     <ClCompile Include="Scripts\TestComp.cpp" />
     <ClCompile Include="Scripts\UIManager.cpp" />
+    <ClCompile Include="Scripts\VictorySceneMan.cpp" />
     <ClCompile Include="STDComps\Animation.cpp" />
     <ClCompile Include="STDComps\Rigidbody.cpp" />
     <ClCompile Include="STDComps\BoxCollider.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Scripts\PlayerController.hpp" />
     <ClInclude Include="Scripts\SafeSpace.hpp" />
     <ClInclude Include="Scripts\UIManager.hpp" />
+    <ClInclude Include="Scripts\VictorySceneMan.hpp" />
     <ClInclude Include="STDComps\Animation.hpp" />
     <ClInclude Include="STDComps\UIText.hpp" />
     <ClInclude Include="STDComps\CircleCollider.hpp" />
